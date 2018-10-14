@@ -1,0 +1,49 @@
+{
+  "Hello": "Hello",
+  "welcome": {
+    "morning": "buongiorno",
+    "afternoon": "buon pomeriggio",
+    "evening": "buonasera",
+    "night": "buona notte",
+    "variant": [
+      "ciao",
+      "hey"
+    ]
+  },
+  "right": [
+    "Hai indovinato!",
+    "Ottimo! Hai indovinato!",
+    "Bravo! Hai indovinato!",
+    "Eccellente! Hai indovinato!",
+    "Molto bene! Hai indovinato!",
+    "Yes! Hai indovinato!",
+    "Perfetto! Hai indovinato!",
+    "Bravissimo! Hai indovinato!",
+    "Fantastico! Hai indovinato!",
+    "Meraviglioso! Hai indovinato!"
+  ],
+  "wrong": [
+    "Risposta sbagliata: riprova!",
+    "No, risposta sbagliata: riprova!",
+    "Eh no, risposta sbagliata: riprova!",
+    "Peccato, risposta sbagliata: riprova!",
+    "Uffi, risposta errata: riprova!",
+    "Conta meglio, risposta sbagliata!"
+  ],
+  "misunderstand": [
+    "Non ho capito.",
+    "Puoi ripetere?",
+    "Cosa hai detto?",
+    "Scusami, puoi ripetere?",
+    "Sono un po' sordo: puoi ripetere?",
+    "Non si sente bene: puoi ripetere?"
+  ],
+  "credits": [
+    "Grazie per aver giocato; alla prossima!",
+    "È stato un piacere giocare con te!",
+    "Spero di rivederti presto!",
+    "Spero di rivederti, anzi risentirti presto!",
+    "Ciao e... duc in altum!",
+    "Buona continuazione amico mio."
+  ]
+}
