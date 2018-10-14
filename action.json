@@ -1,0 +1,26 @@
+{
+  "actions": [
+    {
+      "description": "Default Welcome Intent",
+      "name": "MAIN",
+      "fulfillment": {
+        "conversationName": "test"
+      },
+      "intent": {
+        "name": "actions.intent.MAIN",
+        "trigger": {
+          "queryPatterns": [
+            "parla con telda test"
+          ]
+        }
+      }
+    }
+  ],
+  "conversations": {
+    "test": {
+      "name": "test",
+      "url": "https://us-central1-test-e0c4a.cloudfunctions.net/test"
+    }
+  },
+  "locale": "it"
+}
