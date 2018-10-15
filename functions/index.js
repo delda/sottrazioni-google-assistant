@@ -7,7 +7,7 @@ const {Utils} = require('./utils');
 const strings = require('./strings');
 
 const levels = ['base', 'elementare', 'medio', 'superiore'];
-const version = '2.5.3';
+const version = '2.5.6';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -131,4 +131,4 @@ const endOfConversation = (conv) => {
     return agentResponse;
 };
 
-exports.test = functions.https.onRequest(app);
+exports.subtractions = functions.https.onRequest(app);
