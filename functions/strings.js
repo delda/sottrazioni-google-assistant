@@ -18,18 +18,12 @@ const setLocale = (locale) => {
 const prompts = (key) => {
     console.log('[prompts]');
     const translated = i18n.__(key);
-    const values = Object.keys(translated).map(function(key) {
+    const values = Object.keys(translated).map((key) => {
         return translated[key];
     });
     const index = Utils.getRandomNumber(0, values.length - 1);
 
     return getRandomValue(translated, index);
-};
-
-const welcome = () => {
-    console.log('[welcome]');
-
-    return 'Ciao. ';
 };
 
 const getRandomValue = (obj, idx) => {
@@ -47,8 +41,5 @@ const getRandomValue = (obj, idx) => {
 
 module.exports = {
     setLocale,
-    prompts,
-    get "welcome"() {
-        return welcome();
-    }
+    prompts
 };

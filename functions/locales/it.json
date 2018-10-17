@@ -1,15 +1,15 @@
 {
-  "Hello": "Hello",
-  "welcome": {
-    "morning": "buongiorno",
-    "afternoon": "buon pomeriggio",
-    "evening": "buonasera",
-    "night": "buona notte",
-    "variant": [
-      "ciao",
-      "hey"
-    ]
-  },
+  "welcome": [
+    "Ciao!",
+    "Hey!",
+    "Benvenuto!",
+    "Bentornato!",
+    "Eccoti qua!",
+    "Eccoti qui!",
+    "Ciao ciao!",
+    "Eccoci qua!",
+    "Eccoci qui!"
+  ],
   "right": [
     "Hai indovinato!",
     "Ottimo! Hai indovinato!",

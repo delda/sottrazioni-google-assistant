@@ -7,7 +7,7 @@ const {Utils} = require('./utils');
 const strings = require('./strings');
 
 const levels = ['base', 'elementare', 'medio', 'superiore'];
-const version = '2.5.6';
+const version = '2.5.15';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -35,8 +35,8 @@ app.intent('Welcome and Level Choice', conv => {
         initialized: false,
     };
 
-    let welcomeText = strings.welcome;
-    welcomeText += 'Seleziona il livello desiderato tra: ';
+    let welcomeText = strings.prompts('welcome');
+    welcomeText += ' Seleziona il livello desiderato tra: ';
     levels.forEach((level) => {
         welcomeText += level + ', ';
     });
