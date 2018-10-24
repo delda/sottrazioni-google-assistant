@@ -3,16 +3,15 @@
 const functions = require('firebase-functions');
 const {Suggestion, Card} = require('dialogflow-fulfillment');
 const {dialogflow} = require('actions-on-google');
-const {Utils} = require('./utils');
+const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
-const levels = ['base', 'elementare', 'medio', 'superiore'];
-const version = '2.5.15';
+const version = '2.6.16';
 
 process.env.DEBUG = 'dialogflow:debug';
 
 const app = dialogflow();
-console.log('version: ' + version);
+console.log('le-sottrazioni: v' + version);
 
 app.middleware((conv) => {
     console.log('[middleware]');
@@ -28,8 +27,8 @@ app.intent('Welcome and Level Choice', conv => {
         level: null,
         correctGuesses: 0,
         totalGuesses: 0,
-        firstAddend: null,
-        secondAddend: null,
+        subtrahend: null,
+        minuend: null,
         firstAttempt: true,
         misundestand: false,
         initialized: false,
@@ -48,21 +47,21 @@ app.intent('Difficulty Level', conv => {
     console.log('[difficultyLevel]');
 
     const level = conv.parameters.difficultyLevel;
-    const addends = conv.utils.pickNumbers(level);
+    const substraction = conv.utils.pickNumbers(level);
 
-    conv.data.firstAddend = addends[0];
-    conv.data.secondAddend = addends[1];
+    conv.data.subtrahend = substraction.subtrahend;
+    conv.data.minuend = substraction.minuend;
     conv.data.level = level;
     conv.data.inizialized = false;
 
-    conv.ask("OK! Quanto fa " + addends[0] + " più " + addends[1] + "?");
+    conv.ask("OK! Quanto fa " + substraction.subtrahend + " meno " + substraction.minuend + "?");
 });
 
 app.intent('Response Answer', conv => {
     console.log('[responseAnswer]');
 
     const guessedNumber = parseInt(conv.parameters.guessedNumber);
-    const correctAnswer = conv.data.firstAddend + conv.data.secondAddend;
+    const correctAnswer = conv.data.subtrahend - conv.data.minuend;
     var agentResponse = '';
 
     if (guessedNumber === correctAnswer) {
@@ -73,20 +72,20 @@ app.intent('Response Answer', conv => {
     } else {
         if (conv.data.firstAttempt) {
             agentResponse = strings.prompts('wrong');
-            agentResponse += ' Quanto fa ' + conv.data.firstAddend + ' più ' + conv.data.secondAddend + '?';
+            agentResponse += ' Quanto fa ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + '?';
             conv.data.firstAttempt = false;
         } else {
-            agentResponse += ' No, mi dispiace: ' + conv.data.firstAddend + ' più ' + conv.data.secondAddend + ' fa ' + correctAnswer + '.';
+            agentResponse += ' No, mi dispiace: ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + ' fa ' + correctAnswer + '.';
             conv.data.firstAttempt = true;
             conv.data.totalGuesses++;
         }
     }
 
     if (conv.data.firstAttempt) {
-        const addends = conv.utils.pickNumbers(conv.data.level);
-        conv.data.firstAddend = addends[0];
-        conv.data.secondAddend = addends[1];
-        agentResponse += ' Quanto fa ' + addends[0] + ' più ' + addends[1] + '?';
+        const substraction = conv.utils.pickNumbers(conv.data.level);
+        conv.data.subtrahend = substraction.subtrahend;
+        conv.data.minuend = substraction.minuend;
+        agentResponse += ' Quanto fa ' + substraction.subtrahend + ' meno ' + substraction.minuend + '?';
     }
 
     conv.ask(agentResponse);

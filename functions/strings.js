@@ -17,29 +17,40 @@ const setLocale = (locale) => {
 
 const prompts = (key) => {
     console.log('[prompts]');
+
     const translated = i18n.__(key);
     const values = Object.keys(translated).map((key) => {
         return translated[key];
     });
-    const index = Utils.getRandomNumber(0, values.length - 1);
+    let utils = new Utils();
+    const index = utils.getRandomNumber(0, values.length - 1);
 
     return getRandomValue(translated, index);
 };
 
 const getRandomValue = (obj, idx) => {
     console.log('[getRandomValue]');
-    var counter = 0;
-    for (var key in obj) {
-        counter++;
+
+    let counter = 0;
+    for (let key in obj) {
         if (counter === idx) {
             return obj[key];
         }
+        counter++;
     }
 
     return undefined;
 };
 
+const isPrompt = (key, value) => {
+    console.log('[isPrompt]');
+
+    const translated = i18n.__(key);
+    return translated.indexOf(value) > -1;
+};
+
 module.exports = {
     setLocale,
-    prompts
+    prompts,
+    isPrompt
 };

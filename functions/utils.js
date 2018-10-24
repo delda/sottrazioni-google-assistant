@@ -1,10 +1,9 @@
 'use strict';
 
 class Utils {
-
     pickNumbers(level) {
         console.log('[pickNumbers]');
-        let firstAddend, secondAddend, multiplier;
+        let subtrahend, minuend, multiplier;
         switch(level) {
             case 'base':
                 multiplier = 10;
@@ -19,17 +18,26 @@ class Utils {
                 multiplier = 10000;
                 break;
         }
-        firstAddend = Utils.getRandomNumber(0, multiplier);
-        secondAddend = Utils.getRandomNumber(0, (multiplier - firstAddend));
+        let substraction = Substraction;
+        substraction.subtrahend = this.getRandomNumber(1, multiplier);
+        substraction.minuend = this.getRandomNumber(0, substraction.subtrahend);
+        substraction.result = substraction.subtrahend - substraction.minuend;
 
-        return [firstAddend, secondAddend];
+        return substraction;
     }
 
-    static getRandomNumber(min, max) {
+    getRandomNumber(min, max) {
         console.log('[getRandomNumber]');
         return Math.floor(Math.random() * (max - min + 1)) + min
     }
-
 }
 
-module.exports = { Utils };
+const Substraction = {
+    subtrahend: 0,
+    minuend: 0,
+    result: 0
+};
+
+const levels = ['base', 'elementare', 'medio', 'superiore'];
+
+module.exports = { Utils, levels };

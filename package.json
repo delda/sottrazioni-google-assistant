@@ -1,3 +1,7 @@
 {
-  "version": "1.0.2"
+  "version": "1.0.2",
+  "dependencies": {
+    "actions-on-google-testing": "^0.2.4",
+    "chai": "^4.2.0"
+  }
 }

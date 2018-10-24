@@ -1,4 +1,8 @@
 functions/node_modules
+node_modules
 .idea
 .firebaserc
 creds.data
+package-lock.json
+test-credentials.json
+gactions
