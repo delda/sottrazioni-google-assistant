@@ -5,9 +5,10 @@ const { expect } = require('chai');
 const assert = require('chai').assert;
 const testCredentials = require("../test-credentials.json");
 const strings = require('../functions/strings');
-const { levels } = require('../functions/utils');
+const { Utils, levels } = require('../functions/utils');
 
 const action = new ActionsOnGoogleAva(testCredentials);
+const utils = new Utils();
 
 action.startTest('sottrazioni - welcome', action => {
     action.locale = 'it-IT';
@@ -31,7 +32,8 @@ action.startTest('sottrazioni - right answer', action => {
     action.locale = 'it-IT';
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
-            return action.send('base');
+            const level = levels[utils.getRandomNumber(0, levels.length - 1)];
+            return action.send(level);
         })
         .then(({ textToSpeech }) => {
             const substraction = strings.matchAll(/\d+/, textToSpeech);
@@ -43,5 +45,25 @@ action.startTest('sottrazioni - right answer', action => {
             const re = RegExp('.+!');
             var rightResponse = re.exec(textToSpeech[0])[0];
             assert.equal(strings.isPrompt('right', rightResponse), true);
+        });
+});
+
+action.startTest('sottrazioni - wrong answer', action => {
+    action.locale = 'it-IT';
+    return action.startWith('il gioco delle sottrazioni')
+        .then(({ textToSpeech }) => {
+            const level = levels[utils.getRandomNumber(0, levels.length - 1)];
+            return action.send(level);
+        })
+        .then(({ textToSpeech }) => {
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1] + 1;
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('wrong', rightResponse), true);
         });
 });
