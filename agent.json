@@ -1,6 +1,6 @@
 {
-  "description": "Il gioco delle addizioni",
-  "language": "en",
+  "description": "Il gioco delle sottrazioni",
+  "language": "it",
   "activeAssistantAgents": [],
   "disableInteractionLogs": false,
   "disableStackdriverLogs": false,
@@ -23,7 +23,7 @@
   },
   "defaultTimezone": "Europe/Madrid",
   "webhook": {
-    "url": "https://us-central1-le-addizioni.cloudfunctions.net/dialogflowFirebaseFulfillment",
+    "url": "https://us-central1-delda-sottrazioni-ff252.cloudfunctions.net/subtractions",
     "headers": {
       "": ""
     },
