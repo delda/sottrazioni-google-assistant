@@ -7,7 +7,6 @@ const testCredentials = require("../test-credentials.json");
 const strings = require('../functions/strings');
 const { levels } = require('../functions/utils');
 
-
 const action = new ActionsOnGoogleAva(testCredentials);
 
 action.startTest('sottrazioni - welcome', action => {
@@ -17,9 +16,32 @@ action.startTest('sottrazioni - welcome', action => {
             const splitText = textToSpeech[0].split('!');
             const greeting = splitText[0] + '!';
             const choise = splitText[1];
-            assert.equal(strings.isPrompt('welcome', greeting), true, 'welcome message \'' + greeting + '\' does not exist');
+            assert.equal(strings.isPrompt('welcome', greeting), true);
             levels.forEach((level) => {
                 expect(choise).to.have.string(level);
             });
+            return action.send('base');
         })
+        .then(({ textToSpeech }) => {
+            expect(textToSpeech[0]).to.have.string('OK!');
+        });
+});
+
+action.startTest('sottrazioni - right answer', action => {
+    action.locale = 'it-IT';
+    return action.startWith('il gioco delle sottrazioni')
+        .then(({ textToSpeech }) => {
+            return action.send('base');
+        })
+        .then(({ textToSpeech }) => {
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+        });
 });
