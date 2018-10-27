@@ -6,7 +6,7 @@ const {dialogflow} = require('actions-on-google');
 const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
-const version = '2.6.16';
+const version = '2.6.21';
 
 process.env.DEBUG = 'dialogflow:debug';
 

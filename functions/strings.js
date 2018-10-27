@@ -49,8 +49,23 @@ const isPrompt = (key, value) => {
     return translated.indexOf(value) > -1;
 };
 
+const matchAll = (regexp, string) => {
+    console.log('[matchAll]');
+
+    var match, results = [];
+    var re = RegExp(regexp,'g');
+
+    do {
+        match = re.exec(string);
+        if (match) results.push(match[0]);
+    } while (match);
+
+    return results;
+};
+
 module.exports = {
     setLocale,
     prompts,
-    isPrompt
+    isPrompt,
+    matchAll
 };
