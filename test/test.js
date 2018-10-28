@@ -65,6 +65,19 @@ action.startTest('sottrazioni - wrong answer', action => {
             const re = RegExp('.+!');
             var rightResponse = re.exec(textToSpeech[0])[0];
             assert.equal(strings.isPrompt('wrong', rightResponse), true);
+
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1] + 1;
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            expect(textToSpeech[0]).to.have.string("No, mi dispiace");
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+            expect(textToSpeech[0]).to.have.string(substraction[0]);
+            expect(textToSpeech[0]).to.have.string(substraction[1]);
+            expect(textToSpeech[0]).to.have.string(substractionResult);
         });
 });
 
