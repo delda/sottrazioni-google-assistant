@@ -67,3 +67,63 @@ action.startTest('sottrazioni - wrong answer', action => {
             assert.equal(strings.isPrompt('wrong', rightResponse), true);
         });
 });
+
+action.startTest('sottrazioni - 5 right answers', action => {
+    action.locale = 'it-IT';
+    return action.startWith('il gioco delle sottrazioni')
+        .then(({ textToSpeech }) => {
+            const level = levels[utils.getRandomNumber(0, levels.length - 1)];
+            return action.send(level);
+        })
+        .then(({ textToSpeech }) => {
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            const re = RegExp('.+!');
+            var rightResponse = re.exec(textToSpeech[0])[0];
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+        });
+});
