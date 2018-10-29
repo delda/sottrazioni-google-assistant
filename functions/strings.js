@@ -27,7 +27,7 @@ const prompts = (key) => {
     let utils = new Utils();
     const index = utils.getRandomNumber(0, values.length - 1);
 
-    return getRandomValue(translated, index);
+    return getValue(translated, index);
 };
 
 const getValue = (obj, idx) => {
