@@ -5,23 +5,23 @@ const {Suggestion, Card} = require('dialogflow-fulfillment');
 const {dialogflow} = require('actions-on-google');
 const {Utils, levels} = require('./utils');
 const strings = require('./strings');
-
+const log = false;
 const version = '2.6.21';
 
 process.env.DEBUG = 'dialogflow:debug';
 
 const app = dialogflow();
-console.log('le-sottrazioni: v' + version);
+log && console.log('le-sottrazioni: v' + version);
 
 app.middleware((conv) => {
-    console.log('[middleware]');
+    log && console.log('[middleware]');
 
     strings.setLocale(conv.user.locale);
     conv.utils = new Utils();
 });
 
 app.intent('Welcome and Level Choice', conv => {
-    console.log('[welcome]');
+    log && console.log('[welcome]');
 
     conv.data = {
         level: null,
@@ -44,7 +44,7 @@ app.intent('Welcome and Level Choice', conv => {
 });
 
 app.intent('Difficulty Level', conv => {
-    console.log('[difficultyLevel]');
+    log && console.log('[difficultyLevel]');
 
     const level = conv.parameters.difficultyLevel;
     const substraction = conv.utils.pickNumbers(level);
@@ -58,7 +58,7 @@ app.intent('Difficulty Level', conv => {
 });
 
 app.intent('Response Answer', conv => {
-    console.log('[responseAnswer]');
+    log && console.log('[responseAnswer]');
 
     const guessedNumber = parseInt(conv.parameters.guessedNumber);
     const correctAnswer = conv.data.subtrahend - conv.data.minuend;
@@ -92,7 +92,7 @@ app.intent('Response Answer', conv => {
 });
 
 app.intent('Misundestand', conv => {
-    console.log('[misunderstand]');
+    log && console.log('[misunderstand]');
 
     if (conv.data.initialized === false) {
         conv.ask(strings.prompts('misunderstand'));
@@ -105,9 +105,9 @@ app.intent('Misundestand', conv => {
 });
 
 app.intent('End of game', conv => {
-    console.log('[endOfGame]');
-    var agentResponse = endOfConversation(conv);
+    log && console.log('[endOfGame]');
 
+    var agentResponse = endOfConversation(conv);
     conv.close(agentResponse);
 });
 

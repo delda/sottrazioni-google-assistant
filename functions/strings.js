@@ -3,6 +3,7 @@
 const i18n = require('i18n');
 const path = require('path');
 const {Utils} = require('./utils');
+var log = typeof log === undefined ? false : log;
 
 i18n.configure({
     locales: ['it', 'en'],
@@ -16,7 +17,7 @@ const setLocale = (locale) => {
 };
 
 const prompts = (key) => {
-    console.log('[prompts]');
+    log && console.log('[prompts]');
 
     const translated = i18n.__(key);
     const values = Object.keys(translated).map((key) => {
@@ -28,8 +29,8 @@ const prompts = (key) => {
     return getRandomValue(translated, index);
 };
 
-const getRandomValue = (obj, idx) => {
-    console.log('[getRandomValue]');
+const getValue = (obj, idx) => {
+    log && console.log('[getValue]');
 
     let counter = 0;
     for (let key in obj) {
@@ -43,14 +44,14 @@ const getRandomValue = (obj, idx) => {
 };
 
 const isPrompt = (key, value) => {
-    console.log('[isPrompt]');
+    log && console.log('[isPrompt]');
 
     const translated = i18n.__(key);
     return translated.indexOf(value) > -1;
 };
 
 const matchAll = (regexp, string) => {
-    console.log('[matchAll]');
+    log && console.log('[matchAll]');
 
     var match, results = [];
     var re = RegExp(regexp,'g');

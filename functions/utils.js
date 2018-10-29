@@ -1,8 +1,9 @@
 'use strict';
+var log = typeof log === undefined ? false : log;
 
 class Utils {
     pickNumbers(level) {
-        console.log('[pickNumbers]');
+        log && console.log('[pickNumbers]');
         let subtrahend, minuend, multiplier;
         switch(level) {
             case 'base':
@@ -27,7 +28,8 @@ class Utils {
     }
 
     getRandomNumber(min, max) {
-        console.log('[getRandomNumber]');
+        log && console.log('[getRandomNumber]');
+
         return Math.floor(Math.random() * (max - min + 1)) + min
     }
 }
