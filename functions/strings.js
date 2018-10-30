@@ -21,6 +21,9 @@ const prompts = (key) => {
     log && console.log('[prompts]');
 
     const translated = i18n.__(key);
+    if (translated === key)
+        return undefined;
+
     const values = Object.keys(translated).map((key) => {
         return translated[key];
     });

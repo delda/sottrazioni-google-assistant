@@ -4,6 +4,7 @@ var log = typeof log === undefined ? false : log;
 class Utils {
     pickNumbers(level) {
         log && console.log('[pickNumbers]');
+
         let subtrahend, minuend, multiplier;
         switch(level) {
             case 'base':
