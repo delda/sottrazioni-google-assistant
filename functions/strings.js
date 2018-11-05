@@ -11,7 +11,7 @@ i18n.configure({
     directory: path.join(__dirname, "/locales"),
     objectNotation: true,
 });
-i18n.setLocale((typeof locale != 'undefined') ? locale : 'it-IT');
+i18n.setLocale((typeof locale !== 'undefined') ? locale : 'it-IT');
 
 const setLocale = (locale) => {
     i18n.setLocale(locale.substr(0, 2));
