@@ -43,7 +43,7 @@ describe('string functions', () => {
     describe('isPrompt()', () => {
         const key = 'welcome';
         const translationTrue = 'Benvenuto!';
-        const translationFalse = '* * *';
+        const translationFalse = 'ABCDE';
         it("'"+translationTrue+"' is into i18n('"+key+"')", () => {
             should.equal(string.isPrompt(key, translationTrue), true);
         });
@@ -65,40 +65,52 @@ describe('string functions', () => {
 });
 
 describe('utils functions', () => {
+    const utils = new Utils();
     describe('Utils.pickNumbers()', () => {
-        const utils = new Utils();
-        var level = 'base';
-        var substraction, result;
-        it("check '"+level+"'", () => {
-            substraction = utils.pickNumbers(level);
+        var substraction, result, maxValue;
+        it("check 'base'", () => {
+            maxValue = 10;
+            substraction = utils.pickNumbers('base');
             result = substraction.subtrahend - substraction.minuend;
-            console.log(substraction);
+            expect(substraction.subtrahend).to.be.at.most(maxValue);
+            expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
+            expect(result).to.be.at.least(0);
+            expect(result).to.be.at.most(maxValue);
+        });
+        it("check 'elementare'", () => {
+            maxValue = 100;
+            substraction = utils.pickNumbers('base');
+            result = substraction.subtrahend - substraction.minuend;
+            expect(substraction.subtrahend).to.be.at.most(maxValue);
+            expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
+            expect(result).to.be.at.least(0);
+            expect(result).to.be.at.most(maxValue);
+        });
+        it("check 'medio'", () => {
+            maxValue = 1000;
+            substraction = utils.pickNumbers('base');
+            result = substraction.subtrahend - substraction.minuend;
+            expect(substraction.subtrahend).to.be.at.most(maxValue);
+            expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
+            expect(result).to.be.at.least(0);
+            expect(result).to.be.at.most(maxValue);
+        });
+        it("check 'superiore'", () => {
+            maxValue = 10000;
+            substraction = utils.pickNumbers('base');
+            result = substraction.subtrahend - substraction.minuend;
+            expect(substraction.subtrahend).to.be.at.most(maxValue);
+            expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
+            expect(result).to.be.at.least(0);
+            expect(result).to.be.at.most(maxValue);
+        });
+    });
+
+    describe('Utils.getRandomNumber()', () => {
+        it('get a random between 0 and 10', () => {
+            var result = utils.getRandomNumber(0, 10);
             expect(result).to.be.at.least(0);
             expect(result).to.be.at.most(10);
-        });
-        level = 'elementare';
-        it("check '"+level+"'", () => {
-            substraction = utils.pickNumbers(level);
-            result = substraction.subtrahend - substraction.minuend;
-            console.log(substraction);
-            expect(result).to.be.at.least(0);
-            expect(result).to.be.at.most(100);
-        });
-        level = 'medio';
-        it("check '"+level+"'", () => {
-            substraction = utils.pickNumbers(level);
-            result = substraction.subtrahend - substraction.minuend;
-            console.log(substraction);
-            expect(result).to.be.at.least(0);
-            expect(result).to.be.at.most(1000);
-        });
-        level = 'superiore';
-        it("check '"+level+"'", () => {
-            substraction = utils.pickNumbers(level);
-            result = substraction.subtrahend - substraction.minuend;
-            console.log(substraction);
-            expect(result).to.be.at.least(0);
-            expect(result).to.be.at.most(10000);
         });
     });
 });
