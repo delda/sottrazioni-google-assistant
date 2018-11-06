@@ -1,8 +1,11 @@
 'use strict';
 
 const { ActionsOnGoogleAva } = require('actions-on-google-testing');
-const { expect } = require('chai');
-const assert = require('chai').assert;
+const chai = require('chai')
+const assert = chai.assert;
+const expect = chai.expect;
+const assertArrays = require('chai-arrays');
+chai.use(assertArrays);
 const testCredentials = require("../test-credentials.json");
 const strings = require('../functions/strings');
 const { Utils, levels } = require('../functions/utils');
@@ -13,13 +16,23 @@ const utils = new Utils();
 action.startTest('sottrazioni - welcome', action => {
     action.locale = 'it-IT';
     return action.startWith('il gioco delle sottrazioni')
-        .then(({ textToSpeech }) => {
+        .then(({ textToSpeech, suggestions }) => {
+            expect(textToSpeech).to.be.an('array');
+            expect(textToSpeech).to.have.lengthOf(1);
+            expect(textToSpeech).to.not.be.empty;
             const splitText = textToSpeech[0].split('!');
             const greeting = splitText[0] + '!';
             const choise = splitText[1];
             assert.equal(strings.isPrompt('welcome', greeting), true);
             levels.forEach((level) => {
                 expect(choise).to.have.string(level);
+            });
+
+            expect(suggestions).to.be.an('array');
+            expect(suggestions).to.have.lengthOf(levels.length);
+            expect(suggestions).to.not.be.empty;
+            levels.forEach((level) => {
+                expect(suggestions).to.be.containing(level);
             });
             return action.send('base');
         })

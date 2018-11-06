@@ -1,8 +1,7 @@
 'use strict';
 
 const functions = require('firebase-functions');
-const {Suggestion, Card} = require('dialogflow-fulfillment');
-const {dialogflow} = require('actions-on-google');
+const {dialogflow, Suggestions} = require('actions-on-google');
 const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 const log = false;
@@ -38,6 +37,7 @@ app.intent('Welcome and Level Choice', conv => {
     welcomeText += ' Seleziona il livello desiderato tra: ';
     levels.forEach((level) => {
         welcomeText += level + ', ';
+        conv.ask(new Suggestions(level));
     });
 
     conv.ask(welcomeText);
