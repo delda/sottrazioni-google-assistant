@@ -4,6 +4,8 @@ const functions = require('firebase-functions');
 const {dialogflow, Suggestions} = require('actions-on-google');
 const {Utils, levels} = require('./utils');
 const strings = require('./strings');
+const shuffle = require('shuffle-array');
+
 const log = false;
 const version = '2.6.21';
 
@@ -31,6 +33,7 @@ app.intent('Welcome and Level Choice', conv => {
         firstAttempt: true,
         misundestand: false,
         initialized: false,
+        suggestions: [],
     };
 
     let welcomeText = strings.prompts('welcome');
@@ -53,8 +56,17 @@ app.intent('Difficulty Level', conv => {
     conv.data.minuend = substraction.minuend;
     conv.data.level = level;
     conv.data.inizialized = false;
+    var suggestions = [];
+    suggestions.push(substraction.subtrahend - substraction.minuend);
+    suggestions.push(conv.utils.getRandomNumber(0, substraction.subtrahend));
+    suggestions.push(conv.utils.getRandomNumber(0, substraction.minuend));
+    shuffle(suggestions);
+    conv.data.suggestions = suggestions;
 
     conv.ask("OK! Quanto fa " + substraction.subtrahend + " meno " + substraction.minuend + "?");
+    conv.data.suggestions.forEach((suggestion) => {
+        conv.ask(new Suggestions(suggestion));
+    });
 });
 
 app.intent('Response Answer', conv => {
@@ -74,6 +86,9 @@ app.intent('Response Answer', conv => {
             agentResponse = strings.prompts('wrong');
             agentResponse += ' Quanto fa ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + '?';
             conv.data.firstAttempt = false;
+            conv.data.suggestions.forEach((suggestion) => {
+                conv.ask(new Suggestions(suggestion));
+            });
         } else {
             agentResponse += ' No, mi dispiace: ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + ' fa ' + correctAnswer + '.';
             conv.data.firstAttempt = true;
@@ -86,6 +101,16 @@ app.intent('Response Answer', conv => {
         conv.data.subtrahend = substraction.subtrahend;
         conv.data.minuend = substraction.minuend;
         agentResponse += ' Quanto fa ' + substraction.subtrahend + ' meno ' + substraction.minuend + '?';
+
+        var suggestions = [];
+        suggestions.push(substraction.subtrahend - substraction.minuend);
+        suggestions.push(conv.utils.getRandomNumber(0, substraction.subtrahend));
+        suggestions.push(conv.utils.getRandomNumber(0, substraction.minuend));
+        shuffle(suggestions);
+        conv.data.suggestions = suggestions;
+        conv.data.suggestions.forEach((suggestion) => {
+            conv.ask(new Suggestions(suggestion));
+        });
     }
 
     conv.ask(agentResponse);
