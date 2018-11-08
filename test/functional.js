@@ -29,11 +29,12 @@ action.startTest('sottrazioni - welcome', action => {
             });
 
             expect(suggestions).to.be.an('array');
-            expect(suggestions).to.have.lengthOf(levels.length);
+            expect(suggestions).to.have.lengthOf(levels.length + 1);
             expect(suggestions).to.not.be.empty;
             levels.forEach((level) => {
                 expect(suggestions).to.be.containing(level);
             });
+            expect(suggestions).to.be.containing('basta');
             return action.send('base');
         })
         .then(({ textToSpeech }) => {
@@ -48,9 +49,15 @@ action.startTest('sottrazioni - right answer', action => {
             const level = levels[utils.getRandomNumber(0, levels.length - 1)];
             return action.send(level);
         })
-        .then(({ textToSpeech }) => {
+        .then(({ textToSpeech, suggestions }) => {
             const substraction = strings.matchAll(/\d+/, textToSpeech);
             const substractionResult = substraction[0] - substraction[1];
+
+            expect(suggestions).to.not.be.empty;
+            expect(suggestions).to.be.an('array');
+            expect(suggestions).to.have.lengthOf(4);
+            expect(suggestions).to.be.containing(substractionResult.toString());
+            expect(suggestions).to.be.containing('basta');
 
             return action.send(substractionResult.toString());
         })

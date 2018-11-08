@@ -7,7 +7,7 @@ const strings = require('./strings');
 const shuffle = require('shuffle-array');
 
 const log = false;
-const version = '2.7.11';
+const version = '2.7.12';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -42,7 +42,7 @@ app.intent('Welcome and Level Choice', conv => {
         welcomeText += level + ', ';
         conv.ask(new Suggestions(level));
     });
-
+    conv.ask(new Suggestions('basta'));
     conv.ask(welcomeText);
 });
 
