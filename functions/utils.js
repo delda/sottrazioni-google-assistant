@@ -1,4 +1,7 @@
 'use strict';
+
+const shuffle = require('shuffle-array');
+
 var log = typeof log === undefined ? false : log;
 
 class Utils {
@@ -33,6 +36,27 @@ class Utils {
 
         return Math.floor(Math.random() * (max - min + 1)) + min
     }
+
+    getRandomSuggestions(substraction) {
+        var suggestions = [];
+        suggestions.push(parseInt(substraction.result));
+        var number = 0;
+        do {
+            number = (substraction.subtrahend === 0)
+                ? number + 1
+                : this.getRandomNumber(0, substraction.subtrahend);
+        } while (suggestions.includes(number));
+        suggestions.push(number);
+        do {
+            number = (substraction.minuend === 0)
+                ? number + 1
+                : this.getRandomNumber(0, substraction.minuend);
+        } while (suggestions.includes(number))
+        suggestions.push(number);
+        shuffle(suggestions);
+
+        return suggestions;
+    }
 }
 
 const Substraction = {
@@ -43,4 +67,4 @@ const Substraction = {
 
 const levels = ['base', 'elementare', 'medio', 'superiore'];
 
-module.exports = { Utils, levels };
+module.exports = { Utils, levels, Substraction };

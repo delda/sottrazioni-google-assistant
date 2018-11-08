@@ -6,7 +6,7 @@ const path = require('path');
 const should = require('chai').should();
 const expect = require('chai').expect;
 const string = require('../functions/strings');
-const { Utils } = require('../functions/utils');
+const { Utils, Substraction } = require('../functions/utils');
 
 i18n.configure({
     locales: ['it', 'en'],
@@ -71,7 +71,7 @@ describe('utils functions', () => {
         it("check 'base'", () => {
             maxValue = 10;
             substraction = utils.pickNumbers('base');
-            result = substraction.subtrahend - substraction.minuend;
+            result = substraction.result;
             expect(substraction.subtrahend).to.be.at.most(maxValue);
             expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
             expect(result).to.be.at.least(0);
@@ -80,7 +80,7 @@ describe('utils functions', () => {
         it("check 'elementare'", () => {
             maxValue = 100;
             substraction = utils.pickNumbers('base');
-            result = substraction.subtrahend - substraction.minuend;
+            result = substraction.result;
             expect(substraction.subtrahend).to.be.at.most(maxValue);
             expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
             expect(result).to.be.at.least(0);
@@ -89,7 +89,7 @@ describe('utils functions', () => {
         it("check 'medio'", () => {
             maxValue = 1000;
             substraction = utils.pickNumbers('base');
-            result = substraction.subtrahend - substraction.minuend;
+            result = substraction.result;
             expect(substraction.subtrahend).to.be.at.most(maxValue);
             expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
             expect(result).to.be.at.least(0);
@@ -98,7 +98,7 @@ describe('utils functions', () => {
         it("check 'superiore'", () => {
             maxValue = 10000;
             substraction = utils.pickNumbers('base');
-            result = substraction.subtrahend - substraction.minuend;
+            result = substraction.result;
             expect(substraction.subtrahend).to.be.at.most(maxValue);
             expect(substraction.subtrahend).to.be.at.least(substraction.minuend);
             expect(result).to.be.at.least(0);
@@ -111,6 +111,29 @@ describe('utils functions', () => {
             var result = utils.getRandomNumber(0, 10);
             expect(result).to.be.at.least(0);
             expect(result).to.be.at.most(10);
+        });
+    });
+
+    describe('Utils.getRandomSuggestions()', () => {
+        it('get three distinct numbers', () => {
+            var substraction = Substraction;
+            substraction.subtrahend = 10;
+            substraction.minuend = 5;
+            substraction.result = substraction.subtrahend - substraction.minuend;
+            var result = utils.getRandomSuggestions(substraction);
+            expect(result).to.be.an('array');
+            expect(result).to.have.lengthOf(3);
+            expect(result).to.include.members([substraction.result]);
+        });
+        it('special case: subtrahend and minuend are zero', () => {
+            var substraction = Substraction;
+            substraction.subtrahend = 0;
+            substraction.minuend = 0;
+            substraction.result = substraction.subtrahend - substraction.minuend;
+            var result = utils.getRandomSuggestions(substraction);
+            expect(result).to.be.an('array');
+            expect(result).to.have.lengthOf(3);
+            expect(result).to.include.members([substraction.result]);
         });
     });
 });
