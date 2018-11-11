@@ -42,7 +42,7 @@ action.startTest('sottrazioni - welcome', action => {
         });
 });
 
-action.startTest('sottrazioni - right answer', action => {
+action.startTest('sottrazioni - right answer + end of game', action => {
     action.locale = 'it-IT';
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
@@ -65,6 +65,11 @@ action.startTest('sottrazioni - right answer', action => {
             const re = RegExp('.+!');
             var rightResponse = re.exec(textToSpeech[0])[0];
             assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            return action.send('basta');
+        })
+        .then(({ textToSpeech }) => {
+            expect(textToSpeech[0]).to.have.string('una');
         });
 });
 

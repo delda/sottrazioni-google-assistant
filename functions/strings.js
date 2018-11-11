@@ -17,10 +17,17 @@ const setLocale = (locale) => {
     i18n.setLocale(locale.substr(0, 2));
 };
 
-const prompts = (key) => {
+const prompts = (key, quantity) => {
     log && console.log('[prompts]');
 
-    const translated = i18n.__(key);
+    quantity = quantity || 1;
+
+    console.log(quantity);
+    const translated = (quantity === 1)
+        ? i18n.__(key)
+        : i18n.__n(key, quantity);
+    console.log(translated);
+
     if (translated === key)
         return undefined;
 

@@ -7,7 +7,7 @@ const strings = require('./strings');
 const shuffle = require('shuffle-array');
 
 const log = false;
-const version = '2.7.12';
+const version = '2.8.6';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -114,11 +114,11 @@ app.intent('Misundestand', conv => {
 
     if (conv.data.initialized === false) {
         conv.ask(strings.prompts('misunderstand'));
-    } else if (data.misunderstand) {
+    } else if (conv.data.misunderstand) {
         conv.close(endOfConversation(conv));
     } else {
-        data.misunderstand = true;
-        conv.ask(string.prompts('misunderstand'));
+        conv.data.misunderstand = true;
+        conv.ask(strings.prompts('misunderstand'));
     }
 });
 
@@ -130,22 +130,13 @@ app.intent('End of game', conv => {
 });
 
 const endOfConversation = (conv) => {
-    let agentResponse = '';
-    let correctGuesses = conv.data.correctGuesses;
-    let totalGuesses = conv.data.totalGuesses;
-    let pluralQuestion = 'domande';
+    let correctGuesses = conv.data.correctGuesses === 1 ? 'una' : conv.data.correctGuesses;
+    let totalGuesses = conv.data.totalGuesses === 1 ? 'una' : conv.data.totalGuesses;
 
-    if (correctGuesses === 1) {
-        pluralQuestion = 'domanda';
-        correctGuesses = 'una';
-    }
-    if (totalGuesses === 1) {
-        totalGuesses = 'una';
-    }
-    agentResponse += ' Hai risposto correttamente a ' + correctGuesses + ' ' + pluralQuestion + ' su ' + totalGuesses + '. ';
-    agentResponse += strings.prompts('credits');
-
-    return agentResponse;
+    return strings
+        .prompts('summarize')
+        .replace('%correctGuesses', correctGuesses)
+        .replace('%totalGuesses%', totalGuesses);
 };
 
 exports.subtractions = functions.https.onRequest(app);
