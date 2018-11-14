@@ -70,6 +70,7 @@ action.startTest('sottrazioni - right answer + end of game', action => {
         })
         .then(({ textToSpeech }) => {
             expect(textToSpeech[0]).to.have.string('una');
+            expect(textToSpeech[0]).to.not.have.string('%');
         });
 });
 
