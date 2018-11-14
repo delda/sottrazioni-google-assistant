@@ -4,10 +4,9 @@ const functions = require('firebase-functions');
 const {dialogflow, Suggestions} = require('actions-on-google');
 const {Utils, levels} = require('./utils');
 const strings = require('./strings');
-const shuffle = require('shuffle-array');
 
 const log = false;
-const version = '2.8.6';
+const version = '2.8.9';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -135,7 +134,7 @@ const endOfConversation = (conv) => {
 
     return strings
         .prompts('summarize')
-        .replace('%correctGuesses', correctGuesses)
+        .replace('%correctGuesses%', correctGuesses)
         .replace('%totalGuesses%', totalGuesses);
 };
 
