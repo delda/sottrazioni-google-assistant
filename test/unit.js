@@ -38,11 +38,6 @@ describe('string functions', () => {
             const translations = i18n.__('spaghetti');
             should.equal(translations, 'spaghetti');
         });
-        it("use plurals translation", () => {
-            const translations = i18n.__n('summurize', 2);
-            console.log('* * *');
-            console.log(translations);
-        });
     });
 
     describe('isPrompt()', () => {
