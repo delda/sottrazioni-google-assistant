@@ -45,27 +45,55 @@ describe('string functions', () => {
         const translationTrue = 'Benvenuto!';
         const translationFalse = 'ABCDE';
         it("'"+translationTrue+"' is into i18n('"+key+"')", () => {
-            should.equal(string.isPrompt(key, translationTrue), true);
+            should.equal(strings.isPrompt(key, translationTrue), true);
         });
-        it("'"+translationFalse+"' is into i18n('"+key+"')", () => {
-            should.equal(string.isPrompt(key, translationFalse), false);
+        it("'"+translationFalse+"' is not into i18n('"+key+"')", () => {
+            should.equal(strings.isPrompt(key, translationFalse), false);
         });
     });
 
     describe('matchAll()', () => {
         it("match the two numbers to subtrac", () => {
             const question = 'Quanto fa 10 meno 3?';
-            should.equal(string.matchAll(/\d+/, question).length, 2);
+            should.equal(strings.matchAll(/\d+/, question).length, 2);
         });
         it("does not match two numbers because non existent", () => {
             const question = 'Quanto fa dicei meno tre?';
-            should.equal(string.matchAll(/\d+/, question).length, 0);
+            should.equal(strings.matchAll(/\d+/, question).length, 0);
         });
     });
 });
 
 describe('utils functions', () => {
     const utils = new Utils();
+
+    describe('Utils.endOfConversation()', () => {
+        it('single right response', () => {
+            const conv = {
+                data: {
+                    correctGuesses: 1,
+                    totalGuesses: 1,
+                }
+            };
+            const result = utils.endOfConversation(conv);
+            expect(result).to.not.have.string('%');
+            expect(result).to.have.string('domanda');
+            expect(result).to.have.string('su una');
+        });
+        it('multiple right responses', () => {
+            const conv = {
+                data: {
+                    correctGuesses: 5,
+                    totalGuesses: 5,
+                }
+            };
+            const result = utils.endOfConversation(conv);
+            expect(result).to.not.have.string('%');
+            expect(result).to.have.string('domande');
+            expect(result).to.have.string('su 5');
+        });
+    });
+
     describe('Utils.pickNumbers()', () => {
         var substraction, result, maxValue;
         it("check 'base'", () => {

@@ -57,6 +57,20 @@ class Utils {
 
         return suggestions;
     }
+
+    endOfConversation(conv) {
+        const strings = require('../functions/strings');
+
+        let correctGuesses = conv.data.correctGuesses === 1 ? 'una' : conv.data.correctGuesses;
+        let totalGuesses = conv.data.totalGuesses === 1 ? 'una' : conv.data.totalGuesses;
+        let domandaForm = 'domand' + (conv.data.correctGuesses === 1 ? 'a' : 'e');
+
+        return strings
+            .prompts('summarize')
+            .replace('%correctGuesses%', correctGuesses)
+            .replace('%totalGuesses%', totalGuesses)
+            .replace('%domandaForm%', domandaForm);
+    }
 }
 
 const Substraction = {

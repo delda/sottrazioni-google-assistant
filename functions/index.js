@@ -6,7 +6,7 @@ const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '2.8.9';
+const version = '2.8.11';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -114,7 +114,7 @@ app.intent('Misundestand', conv => {
     if (conv.data.initialized === false) {
         conv.ask(strings.prompts('misunderstand'));
     } else if (conv.data.misunderstand) {
-        conv.close(endOfConversation(conv));
+        conv.close(conv.utils.endOfConversation(conv));
     } else {
         conv.data.misunderstand = true;
         conv.ask(strings.prompts('misunderstand'));
@@ -124,18 +124,8 @@ app.intent('Misundestand', conv => {
 app.intent('End of game', conv => {
     log && console.log('[endOfGame]');
 
-    var agentResponse = endOfConversation(conv);
+    var agentResponse = conv.utils.endOfConversation(conv);
     conv.close(agentResponse);
 });
-
-const endOfConversation = (conv) => {
-    let correctGuesses = conv.data.correctGuesses === 1 ? 'una' : conv.data.correctGuesses;
-    let totalGuesses = conv.data.totalGuesses === 1 ? 'una' : conv.data.totalGuesses;
-
-    return strings
-        .prompts('summarize')
-        .replace('%correctGuesses%', correctGuesses)
-        .replace('%totalGuesses%', totalGuesses);
-};
 
 exports.subtractions = functions.https.onRequest(app);

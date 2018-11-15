@@ -47,6 +47,6 @@
 		"Buona continuazione amico mio."
 	],
 	"summarize": [
-		"Hai risposto correttamente a %correctGuesses% domanda su %totalGuesses%"
+		"Hai risposto correttamente a %correctGuesses% %domandaForm% su %totalGuesses%"
 	]
 }
