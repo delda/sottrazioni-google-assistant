@@ -22,11 +22,9 @@ const prompts = (key, quantity) => {
 
     quantity = quantity || 1;
 
-    console.log(quantity);
     const translated = (quantity === 1)
         ? i18n.__(key)
         : i18n.__n(key, quantity);
-    console.log(translated);
 
     if (translated === key)
         return undefined;
