@@ -65,6 +65,7 @@ action.startTest('sottrazioni - right answer + end of game', action => {
             const re = RegExp('.+!');
             var rightResponse = re.exec(textToSpeech[0])[0];
             assert.equal(strings.isPrompt('right', rightResponse), true);
+            // assert.not.contains();
 
             return action.send('basta');
         })

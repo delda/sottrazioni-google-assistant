@@ -5,7 +5,7 @@ const i18n = require('i18n');
 const path = require('path');
 const should = require('chai').should();
 const expect = require('chai').expect;
-const string = require('../functions/strings');
+const strings = require('../functions/strings');
 const { Utils, Substraction } = require('../functions/utils');
 
 i18n.configure({
@@ -19,7 +19,7 @@ i18n.setLocale('it');
 describe('string functions', () => {
     describe('prompts()', () => {
         it("get a translation of 'credits' inside i18n('credits')", () => {
-            const credit = string.prompts('credits');
+            const credit = strings.prompts('credits');
             const translations = i18n.__('credits');
             const quindi = translations.find((key) => {
                 return key == credit;

@@ -1,7 +1,5 @@
 'use strict';
 
-const shuffle = require('shuffle-array');
-
 var log = typeof log === undefined ? false : log;
 
 class Utils {
@@ -38,6 +36,8 @@ class Utils {
     }
 
     getRandomSuggestions(substraction) {
+        const shuffle = require('shuffle-array');
+
         var suggestions = [];
         suggestions.push(parseInt(substraction.result));
         var number = 0;
