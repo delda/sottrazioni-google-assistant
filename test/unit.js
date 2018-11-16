@@ -18,7 +18,7 @@ i18n.setLocale('it');
 
 describe('i18n', () => {
     ['it', 'en'].forEach(function (locale) {
-        describe('italian', () => {
+        describe("locale '" + locale + "'", () => {
             ['welcome', 'right', 'wrong', 'misunderstand', 'credits', 'summarize'].forEach(function(key) {
                 it("'" + key + "' key translations", () => {
                     const translations = i18n.__(key);
