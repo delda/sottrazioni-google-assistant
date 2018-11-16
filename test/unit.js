@@ -16,6 +16,21 @@ i18n.configure({
 });
 i18n.setLocale('it');
 
+describe('i18n', () => {
+    ['it', 'en'].forEach(function (locale) {
+        describe('italian', () => {
+            ['welcome', 'right', 'wrong', 'misunderstand', 'credits', 'summarize'].forEach(function(key) {
+                it("'" + key + "' key translations", () => {
+                    const translations = i18n.__(key);
+                    expect(translations).to.be.an('array');
+                    expect(translations).to.not.be.empty;
+                    expect(translations).to.have.lengthOf.above(0);
+                });
+            });
+        });
+    });
+});
+
 describe('string functions', () => {
     describe('prompts()', () => {
         it("get a translation of 'credits' inside i18n('credits')", () => {

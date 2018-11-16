@@ -1,5 +1,56 @@
 {
-	"test": {
-		"Hello": "test.Hello"
-	}
+    "welcome": [
+        "Hello!",
+        "Hi!",
+        "Hey!",
+        "Welcome!",
+        "Welcome back!",
+        "Hi there!",
+        "Here we go!",
+        "Here we are!"
+    ],
+    "right": [
+        "You guessed it!",
+        "You've got it right!",
+        "Well done!",
+        "Great, you guessed it!",
+        "Great, you've got it right!",
+        "Great, well done!",
+        "Excellent, you guessed it!",
+        "Excellent, you've got it right!",
+        "Excellent, well done!",
+        "Perfect, you guessed it!",
+        "Perfect, you've got it right!",
+        "Perfect, well done!",
+        "Nice, you guessed it!",
+        "Nice, you've got it right!",
+        "Nice, well done!",
+        "Yes, you guessed it!",
+        "Yes, you've got it right!",
+        "Yes, well done!"
+    ],
+    "wrong": [
+        "Wrong one: try again!",
+        "Wrong answer: try again!",
+        "Ops, wrong one: try again!",
+        "Ops, wrong answer: try again!",
+        "No, wrong one: try again!",
+        "No, wrong answer: try again!"
+    ],
+    "misunderstand": [
+        "I didn't understand",
+        "I didn't get it",
+        "Can you repeat, please?",
+        "Sorry, can you repeat, please?"
+    ],
+    "credits": [
+        "Thank you for playing, see you next time!",
+        "It was a pleasure playing with you!",
+        "I hope to see you soon!",
+        "See ya",
+        "Have a nice day my friend!"
+    ],
+    "summarize": [
+        "You've got %correctGuesses% %domandaForm% right out of %totalGuesses%"
+    ]
 }
