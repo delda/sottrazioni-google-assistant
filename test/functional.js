@@ -62,16 +62,27 @@ action.startTest('sottrazioni - right answer + end of game', action => {
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
-            assert.equal(strings.isPrompt('right', rightResponse), true);
-            // assert.not.contains();
+            expect(textToSpeech).to.be.an('array');
+            expect(textToSpeech).to.not.be.empty;
 
-            return action.send('basta');
-        })
-        .then(({ textToSpeech }) => {
-            expect(textToSpeech[0]).to.have.string('una');
-            expect(textToSpeech[0]).to.not.have.string('%');
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            const audio = RegExp('<audio src="(.*?)"\/>');
+            var getAudio = audio.exec(textToSpeech[0]);
+            expect(getAudio).to.be.an('array');
+            expect(getAudio).to.not.be.empty;
+            expect(getAudio[0]).to.be.containing('tada.mp3');
+
+            // return action.send('basta');
+            // })
+            // .then(({ textToSpeech }) => {
+            //     expect(textToSpeech[0]).to.have.string('una');
+            //     expect(textToSpeech[0]).to.not.have.string('%');
         });
 });
 
@@ -89,22 +100,40 @@ action.startTest('sottrazioni - wrong answer', action => {
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('wrong', rightResponse), true);
 
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            const audio = RegExp('<audio src="(.*?)"\/>');
+            var getAudio = audio.exec(textToSpeech[0]);
+            expect(getAudio).to.be.an('array');
+            expect(getAudio).to.not.be.empty;
+            expect(getAudio[0]).to.be.containing('retry.mp3');
+
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1] + 1;
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            expect(textToSpeech[0]).to.have.string("No, mi dispiace");
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            expect(rightResponse).to.have.string("No, mi dispiace");
+
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
-            expect(textToSpeech[0]).to.have.string(substraction[0]);
-            expect(textToSpeech[0]).to.have.string(substraction[1]);
-            expect(textToSpeech[0]).to.have.string(substractionResult);
+            expect(rightResponse).to.have.string(substraction[0]);
+            expect(rightResponse).to.have.string(substraction[1]);
+            expect(rightResponse).to.have.string(substractionResult);
         });
 });
 
@@ -116,54 +145,89 @@ action.startTest('sottrazioni - 5 right answers', action => {
             return action.send(level);
         })
         .then(({ textToSpeech }) => {
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
 
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
 
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
 
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
 
-            const substraction = strings.matchAll(/\d+/, textToSpeech);
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
             const substractionResult = substraction[0] - substraction[1];
 
             return action.send(substractionResult.toString());
         })
         .then(({ textToSpeech }) => {
-            const re = RegExp('.+!');
-            var rightResponse = re.exec(textToSpeech[0])[0];
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
         });
 });

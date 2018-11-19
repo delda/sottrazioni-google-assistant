@@ -69,23 +69,26 @@ app.intent('Response Answer', conv => {
 
     const guessedNumber = parseInt(conv.parameters.guessedNumber);
     const correctAnswer = conv.data.subtrahend - conv.data.minuend;
-    var agentResponse = '';
+    var agentResponse = '<speak>';
 
     if (guessedNumber === correctAnswer) {
-        agentResponse = strings.prompts('right');
+        agentResponse += conv.utils.getSound('tada.mp3');
+        agentResponse += strings.prompts('right');
         conv.data.totalGuesses++;
         conv.data.correctGuesses++;
         conv.data.firstAttempt = true;
     } else {
         if (conv.data.firstAttempt) {
-            agentResponse = strings.prompts('wrong');
-            agentResponse += ' Quanto fa ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + '?';
+            agentResponse += conv.utils.getSound('retry.mp3');
+            agentResponse += strings.prompts('wrong');
+            agentResponse += 'Quanto fa ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + '?';
             conv.data.firstAttempt = false;
             conv.data.suggestions.forEach((suggestion) => {
                 conv.ask(new Suggestions(suggestion.toString()));
             });
             conv.ask(new Suggestions('basta'));
         } else {
+            agentResponse += conv.utils.getSound('error.mp3');
             agentResponse += ' No, mi dispiace: ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + ' fa ' + correctAnswer + '.';
             conv.data.firstAttempt = true;
             conv.data.totalGuesses++;
@@ -104,6 +107,7 @@ app.intent('Response Answer', conv => {
         });
         conv.ask(new Suggestions('basta'));
     }
+    agentResponse += '</speak>';
 
     conv.ask(agentResponse);
 });

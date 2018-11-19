@@ -58,6 +58,14 @@ class Utils {
         return suggestions;
     }
 
+    getSound(sound) {
+        const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
+        const hosting = "";
+        const baseUrl = hosting || `https://${firebaseConfig.projectId}.firebaseapp.com`;
+
+        return `<audio src="${baseUrl}/sounds/${sound}"/>`;
+    }
+
     endOfConversation(conv) {
         const strings = require('../functions/strings');
 
