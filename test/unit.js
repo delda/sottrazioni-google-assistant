@@ -179,4 +179,21 @@ describe('utils functions', () => {
             expect(result).to.include.members([substraction.result]);
         });
     });
+
+    describe('Utils.getCardinal()', () => {
+        it('get SSML cardinal number from integer', () => {
+            var number = utils.getCardinal(1234);
+            expect(number).to.be.an('string');
+            expect(number).to.have.string('<say-as interpret-as="ordinal">');
+            expect(number).to.have.string('1234');
+            expect(number).to.have.string('</say-as>');
+        });
+        it('get SSML cardinal number from string', () => {
+            var number = utils.getCardinal('1234');
+            expect(number).to.be.an('string');
+            expect(number).to.have.string('<say-as interpret-as="ordinal">');
+            expect(number).to.have.string('1234');
+            expect(number).to.have.string('</say-as>');
+        });
+    });
 });

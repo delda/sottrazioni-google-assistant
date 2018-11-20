@@ -6,7 +6,7 @@ const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '2.8.16';
+const version = '2.8.18';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -57,7 +57,11 @@ app.intent('Difficulty Level', conv => {
     conv.data.inizialized = false;
     conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
 
-    conv.ask("OK! Quanto fa " + substraction.subtrahend + " meno " + substraction.minuend + "?");
+    conv.ask("OK! Quanto fa "
+        + conv.utils.getCardinal(substraction.subtrahend)
+        + " meno "
+        + conv.utils.getCardinal(substraction.minuend)
+        + "?");
     conv.data.suggestions.forEach((suggestion) => {
         conv.ask(new Suggestions(suggestion.toString()));
     });
@@ -81,7 +85,11 @@ app.intent('Response Answer', conv => {
         if (conv.data.firstAttempt) {
             agentResponse += conv.utils.getSound('retry.mp3');
             agentResponse += strings.prompts('wrong');
-            agentResponse += 'Quanto fa ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + '?';
+            agentResponse += 'Quanto fa '
+                + conv.utils.getCardinal(conv.data.subtrahend)
+                + ' meno '
+                + conv.utils.getCardinal(conv.data.minuend)
+                + '?';
             conv.data.firstAttempt = false;
             conv.data.suggestions.forEach((suggestion) => {
                 conv.ask(new Suggestions(suggestion.toString()));
@@ -89,7 +97,12 @@ app.intent('Response Answer', conv => {
             conv.ask(new Suggestions('basta'));
         } else {
             agentResponse += conv.utils.getSound('error.mp3');
-            agentResponse += ' No, mi dispiace: ' + conv.data.subtrahend + ' meno ' + conv.data.minuend + ' fa ' + correctAnswer + '.';
+            agentResponse += ' No, mi dispiace: '
+                + conv.utils.getCardinal(conv.data.subtrahend)
+                + ' meno '
+                + conv.utils.getCardinal(conv.data.minuend)
+                + ' fa '
+                + correctAnswer + '.';
             conv.data.firstAttempt = true;
             conv.data.totalGuesses++;
         }
@@ -99,7 +112,11 @@ app.intent('Response Answer', conv => {
         const substraction = conv.utils.pickNumbers(conv.data.level);
         conv.data.subtrahend = substraction.subtrahend;
         conv.data.minuend = substraction.minuend;
-        agentResponse += ' Quanto fa ' + substraction.subtrahend + ' meno ' + substraction.minuend + '?';
+        agentResponse += ' Quanto fa '
+            + conv.utils.getCardinal(substraction.subtrahend)
+            + ' meno '
+            + conv.utils.getCardinal(substraction.minuend)
+            + '?';
 
         conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
         conv.data.suggestions.forEach((suggestion) => {

@@ -79,6 +79,12 @@ class Utils {
             .replace('%totalGuesses%', totalGuesses)
             .replace('%domandaForm%', domandaForm);
     }
+
+    getCardinal(number) {
+        return '<say-as interpret-as="ordinal">' +
+            number +
+            '</say-as>';
+    }
 }
 
 const Substraction = {
