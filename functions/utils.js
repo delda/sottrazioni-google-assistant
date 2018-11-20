@@ -67,7 +67,7 @@ class Utils {
     }
 
     endOfConversation(conv) {
-        const strings = require('../functions/strings');
+        const strings = require('./strings');
 
         let correctGuesses = conv.data.correctGuesses === 1 ? 'una' : conv.data.correctGuesses;
         let totalGuesses = conv.data.totalGuesses === 1 ? 'una' : conv.data.totalGuesses;
