@@ -184,16 +184,32 @@ describe('utils functions', () => {
         it('get SSML cardinal number from integer', () => {
             var number = utils.getCardinal(1234);
             expect(number).to.be.an('string');
-            expect(number).to.have.string('<say-as interpret-as="ordinal">');
+            expect(number).to.have.string('<say-as interpret-as="cardinal">');
             expect(number).to.have.string('1234');
             expect(number).to.have.string('</say-as>');
         });
         it('get SSML cardinal number from string', () => {
             var number = utils.getCardinal('1234');
             expect(number).to.be.an('string');
-            expect(number).to.have.string('<say-as interpret-as="ordinal">');
+            expect(number).to.have.string('<say-as interpret-as="cardinal">');
             expect(number).to.have.string('1234');
             expect(number).to.have.string('</say-as>');
+        });
+    });
+
+    describe('Utils.getSpeakMarkup()', () => {
+        it('add speak tag', () => {
+            const baseString = '1234';
+            const result = utils.getSpeakMarkup(baseString);
+            expect(result).to.have.string('<speak>');
+            expect(result).to.have.string('</speak>');
+        });
+    });
+
+    describe('Utils.getBreak()', () => {
+        it('get lenght of pause of "1s"', () => {
+            const pause = utils.getBreak('1s');
+            expect(pause).to.have.string('<break time="1s"/>');
         });
     });
 });

@@ -6,7 +6,7 @@ const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '2.8.18';
+const version = '2.8.23';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -57,11 +57,12 @@ app.intent('Difficulty Level', conv => {
     conv.data.inizialized = false;
     conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
 
-    conv.ask("OK! Quanto fa "
+    const response = "OK! Quanto fa "
         + conv.utils.getCardinal(substraction.subtrahend)
         + " meno "
         + conv.utils.getCardinal(substraction.minuend)
-        + "?");
+        + "?";
+    conv.ask(conv.utils.getSpeakMarkup(response));
     conv.data.suggestions.forEach((suggestion) => {
         conv.ask(new Suggestions(suggestion.toString()));
     });
@@ -73,7 +74,7 @@ app.intent('Response Answer', conv => {
 
     const guessedNumber = parseInt(conv.parameters.guessedNumber);
     const correctAnswer = conv.data.subtrahend - conv.data.minuend;
-    var agentResponse = '<speak>';
+    var agentResponse = '';
 
     if (guessedNumber === correctAnswer) {
         agentResponse += conv.utils.getSound('tada.mp3');
@@ -85,7 +86,7 @@ app.intent('Response Answer', conv => {
         if (conv.data.firstAttempt) {
             agentResponse += conv.utils.getSound('retry.mp3');
             agentResponse += strings.prompts('wrong');
-            agentResponse += 'Quanto fa '
+            agentResponse += ' Quanto fa '
                 + conv.utils.getCardinal(conv.data.subtrahend)
                 + ' meno '
                 + conv.utils.getCardinal(conv.data.minuend)
@@ -102,6 +103,7 @@ app.intent('Response Answer', conv => {
                 + ' meno '
                 + conv.utils.getCardinal(conv.data.minuend)
                 + ' fa '
+                + conv.utils.getBreak('100ms')
                 + correctAnswer + '.';
             conv.data.firstAttempt = true;
             conv.data.totalGuesses++;
@@ -124,9 +126,8 @@ app.intent('Response Answer', conv => {
         });
         conv.ask(new Suggestions('basta'));
     }
-    agentResponse += '</speak>';
 
-    conv.ask(agentResponse);
+    conv.ask(conv.utils.getSpeakMarkup(agentResponse));
 });
 
 app.intent('Misundestand', conv => {

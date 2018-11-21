@@ -39,8 +39,10 @@ action.startTest('sottrazioni - welcome', action => {
         })
         .then(({ textToSpeech }) => {
             expect(textToSpeech[0]).to.have.string('OK!');
+            expect(textToSpeech[0]).to.have.string('<');
         });
 });
+
 
 action.startTest('sottrazioni - right answer + end of game', action => {
     action.locale = 'it-IT';
@@ -78,11 +80,11 @@ action.startTest('sottrazioni - right answer + end of game', action => {
             expect(getAudio).to.not.be.empty;
             expect(getAudio[0]).to.be.containing('tada.mp3');
 
-            // return action.send('basta');
-            // })
-            // .then(({ textToSpeech }) => {
-            //     expect(textToSpeech[0]).to.have.string('una');
-            //     expect(textToSpeech[0]).to.not.have.string('%');
+            return action.send('basta')
+        })
+        .then(({ textToSpeech }) => {
+            expect(textToSpeech[0]).to.have.string('una');
+            expect(textToSpeech[0]).to.not.have.string('%');
         });
 });
 

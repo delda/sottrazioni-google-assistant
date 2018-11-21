@@ -81,9 +81,19 @@ class Utils {
     }
 
     getCardinal(number) {
-        return '<say-as interpret-as="ordinal">' +
+        return '<say-as interpret-as="cardinal">' +
             number +
             '</say-as>';
+    }
+
+    getSpeakMarkup(string) {
+        return '<speak>'
+            +  string
+            + '</speak>';
+    }
+
+    getBreak(time) {
+        return '<break time="' + time + '"/>';
     }
 }
 
