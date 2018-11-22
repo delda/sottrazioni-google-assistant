@@ -80,14 +80,13 @@ describe('string functions', () => {
 });
 
 describe('utils functions', () => {
-    const utils = new Utils();
-
     describe('Utils.endOfConversation()', () => {
+        const utils = new Utils();
         it('single right response', () => {
             const conv = {
                 data: {
                     correctGuesses: 1,
-                    totalGuesses: 1,
+                    totalGuesses: 1
                 }
             };
             const result = utils.endOfConversation(conv);
@@ -99,7 +98,7 @@ describe('utils functions', () => {
             const conv = {
                 data: {
                     correctGuesses: 5,
-                    totalGuesses: 5,
+                    totalGuesses: 5
                 }
             };
             const result = utils.endOfConversation(conv);
@@ -111,6 +110,7 @@ describe('utils functions', () => {
 
     describe('Utils.pickNumbers()', () => {
         var substraction, result, maxValue;
+        const utils = new Utils();
         it("check 'base'", () => {
             maxValue = 10;
             substraction = utils.pickNumbers('base');
@@ -150,6 +150,7 @@ describe('utils functions', () => {
     });
 
     describe('Utils.getRandomNumber()', () => {
+        const utils = new Utils();
         it('get a random between 0 and 10', () => {
             var result = utils.getRandomNumber(0, 10);
             expect(result).to.be.at.least(0);
@@ -158,6 +159,7 @@ describe('utils functions', () => {
     });
 
     describe('Utils.getRandomSuggestions()', () => {
+        const utils = new Utils();
         it('get three distinct numbers', () => {
             var substraction = Substraction;
             substraction.subtrahend = 10;
@@ -181,6 +183,7 @@ describe('utils functions', () => {
     });
 
     describe('Utils.getCardinal()', () => {
+        const utils = new Utils();
         it('get SSML cardinal number from integer', () => {
             var number = utils.getCardinal(1234);
             expect(number).to.be.an('string');
@@ -198,6 +201,7 @@ describe('utils functions', () => {
     });
 
     describe('Utils.getSpeakMarkup()', () => {
+        const utils = new Utils();
         it('add speak tag', () => {
             const baseString = '1234';
             const result = utils.getSpeakMarkup(baseString);
@@ -207,6 +211,7 @@ describe('utils functions', () => {
     });
 
     describe('Utils.getBreak()', () => {
+        const utils = new Utils();
         it('get lenght of pause of "1s"', () => {
             const pause = utils.getBreak('1s');
             expect(pause).to.have.string('<break time="1s"/>');

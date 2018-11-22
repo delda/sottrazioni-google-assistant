@@ -59,7 +59,9 @@ class Utils {
     }
 
     getSound(sound) {
-        const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
+        const firebaseConfig = typeof process.env.FIREBASE_CONFIG === "undefined"
+            ? ''
+            : JSON.parse(process.env.FIREBASE_CONFIG);
         const hosting = "";
         const baseUrl = hosting || `https://${firebaseConfig.projectId}.firebaseapp.com`;
 
@@ -72,12 +74,18 @@ class Utils {
         let correctGuesses = conv.data.correctGuesses === 1 ? 'una' : conv.data.correctGuesses;
         let totalGuesses = conv.data.totalGuesses === 1 ? 'una' : conv.data.totalGuesses;
         let domandaForm = 'domand' + (conv.data.correctGuesses === 1 ? 'a' : 'e');
-
-        return strings
+        let result = strings
             .prompts('summarize')
             .replace('%correctGuesses%', correctGuesses)
             .replace('%totalGuesses%', totalGuesses)
             .replace('%domandaForm%', domandaForm);
+        result = result
+            + ' '
+            + strings.prompts('goodbye')
+            + ' '
+            + this.getSound('end.mp3');
+
+        return this.getSpeakMarkup(result);
     }
 
     getCardinal(number) {

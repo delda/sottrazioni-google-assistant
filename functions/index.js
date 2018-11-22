@@ -6,7 +6,7 @@ const {Utils, levels} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '2.8.23';
+const version = '2.8.27';
 
 process.env.DEBUG = 'dialogflow:debug';
 

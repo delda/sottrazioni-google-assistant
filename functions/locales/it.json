@@ -47,6 +47,12 @@
 		"Buona continuazione amico mio."
 	],
 	"summarize": [
-		"Hai risposto correttamente a %correctGuesses% %domandaForm% su %totalGuesses%"
+		"Hai risposto correttamente a %correctGuesses% %domandaForm% su %totalGuesses%."
+	],
+	"goodbye": [
+		"Arrivederci!",
+		"Alla prossima!",
+		"Ciao ciao!",
+		"A presto!"
 	]
 }
