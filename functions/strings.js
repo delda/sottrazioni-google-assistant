@@ -29,6 +29,9 @@ const prompts = (key, quantity) => {
     if (translated === key)
         return undefined;
 
+    if (!Array.isArray(translated))
+        return translated;
+
     const values = Object.keys(translated).map((key) => {
         return translated[key];
     });

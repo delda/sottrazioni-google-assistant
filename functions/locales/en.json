@@ -1,4 +1,87 @@
 {
+    "choose": [
+        "Select the desired level between "
+    ],
+    "correctGuesses": {
+        "one": " %s",
+        "other": " %s"
+    },
+    "credits": [
+        "Have a nice day my friend!",
+        "I hope to see you soon!",
+        "It was a pleasure playing with you!",
+        "See ya",
+        "Thank you for playing, see you next time!"
+    ],
+    "enough": [
+        "enough"
+    ],
+    "equals": [
+        "is equal to",
+        "is"
+    ],
+    "failed": [
+        "No, I am afraid",
+        "No, I am sorry",
+        "No, I apologise",
+        "No, I do mind",
+        "No, I feel bad",
+        "No, I'm afraid",
+        "No, I'm sorry",
+        "No, sorry for that",
+        "No, forgive me"
+    ],
+    "goodbye": [
+        "Bye bye!",
+        "Goodbye!",
+        "See you later!",
+        "Have a nice day!"
+    ],
+    "how_much": [
+        "How much"
+    ],
+    "levels": [
+        "base",
+        "elementary",
+        "medium",
+        "superior"
+    ],
+    "misunderstand": [
+        "Can you repeat, please?",
+        "I didn't get it",
+        "I didn't understand",
+        "Sorry, can you repeat, please?"
+    ],
+    "right": [
+        "Excellent, well done!",
+        "Excellent, you guessed it!",
+        "Excellent, you've got it right!",
+        "Great, well done!",
+        "Great, you guessed it!",
+        "Great, you've got it right!",
+        "Nice, well done!",
+        "Nice, you guessed it!",
+        "Nice, you've got it right!",
+        "Perfect, well done!",
+        "Perfect, you guessed it!",
+        "Perfect, you've got it right!",
+        "Well done!",
+        "Yes, well done!",
+        "Yes, you guessed it!",
+        "Yes, you've got it right!",
+        "You guessed it!",
+        "You've got it right!"
+    ],
+    "subtraction": [
+        "%subtrahend% minus %minuend%"
+    ],
+    "summarize": [
+        "You've got %correctGuesses% right out %totalGuesses%."
+    ],
+    "totalGuesses": {
+        "one": "of %s",
+        "other": "of %s"
+    },
     "welcome": [
         "Hello!",
         "Hi!",
@@ -9,26 +92,6 @@
         "Here we go!",
         "Here we are!"
     ],
-    "right": [
-        "You guessed it!",
-        "You've got it right!",
-        "Well done!",
-        "Great, you guessed it!",
-        "Great, you've got it right!",
-        "Great, well done!",
-        "Excellent, you guessed it!",
-        "Excellent, you've got it right!",
-        "Excellent, well done!",
-        "Perfect, you guessed it!",
-        "Perfect, you've got it right!",
-        "Perfect, well done!",
-        "Nice, you guessed it!",
-        "Nice, you've got it right!",
-        "Nice, well done!",
-        "Yes, you guessed it!",
-        "Yes, you've got it right!",
-        "Yes, well done!"
-    ],
     "wrong": [
         "Wrong one: try again!",
         "Wrong answer: try again!",
@@ -36,21 +99,5 @@
         "Ops, wrong answer: try again!",
         "No, wrong one: try again!",
         "No, wrong answer: try again!"
-    ],
-    "misunderstand": [
-        "I didn't understand",
-        "I didn't get it",
-        "Can you repeat, please?",
-        "Sorry, can you repeat, please?"
-    ],
-    "credits": [
-        "Thank you for playing, see you next time!",
-        "It was a pleasure playing with you!",
-        "I hope to see you soon!",
-        "See ya",
-        "Have a nice day my friend!"
-    ],
-    "summarize": [
-        "You've got %correctGuesses% %domandaForm% right out of %totalGuesses%"
     ]
 }

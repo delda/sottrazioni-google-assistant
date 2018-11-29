@@ -1,77 +1,91 @@
 {
-	"choose": [
-		"Seleziona il livello desiderato tra"
-	],
-	"credits": [
-		"Buona continuazione amico mio.",
-		"Ciao e... duc in altum!",
-		"Grazie per aver giocato; alla prossima!",
-		"È stato un piacere giocare con te!",
-		"Spero di rivederti presto!",
-		"Spero di rivederti, anzi risentirti presto!"
-	],
-	"enough": [
-		"basta"
-	],
-	"equals": [
-		"è uguale a",
-		"fa"
-	],
-	"failed": [
-		"No, mi dispiace"
-	],
-	"goodbye": [
-		"A presto!",
-		"Alla prossima!",
-		"Arrivederci!",
-		"Ciao ciao!"
-	],
-	"how_much": [
-		"Quanto fa "
-	],
-	"misunderstand": [
-		"Cosa hai detto?",
-		"Non ho capito.",
-		"Non si sente bene: puoi ripetere?",
-		"Puoi ripetere?",
-		"Scusami, puoi ripetere?",
-		"Sono un po' sordo: puoi ripetere?"
-	],
-	"right": [
-		"Bravissimo! Hai indovinato!",
-		"Bravo! Hai indovinato!",
-		"Eccellente! Hai indovinato!",
-		"Fantastico! Hai indovinato!",
-		"Hai indovinato!",
-		"Meraviglioso! Hai indovinato!",
-		"Molto bene! Hai indovinato!",
-		"Ottimo! Hai indovinato!",
-		"Perfetto! Hai indovinato!",
-		"Yes! Hai indovinato!"
-	],
-	"subtraction": [
-		"%subtrahend% meno %minuend%"
-	],
-	"summarize": [
-		"Hai risposto correttamente a %correctGuesses% %domandaForm% su %totalGuesses%."
-	],
-	"welcome": [
-		"Bentornato!",
-		"Benvenuto!",
-		"Ciao!",
-		"Ciao-ciao!",
-		"Eccoci qua!",
-		"Eccoci qui!",
-		"Eccoti qua!",
-		"Eccoti qui!",
-		"Hey!"
-	],
-	"wrong": [
-		"Conta meglio, risposta sbagliata!",
-		"Eh no, risposta sbagliata: riprova!",
-		"No, risposta sbagliata: riprova!",
-		"Risposta sbagliata: riprova!",
-		"Peccato, risposta sbagliata: riprova!",
-		"Uffi, risposta errata: riprova!"
-	]
+    "choose": [
+        "Seleziona il livello desiderato tra"
+    ],
+    "correctGuesses": {
+        "one": "una domanda",
+        "other": "[0] zero domande|[2,] %s domande"
+    },
+    "credits": [
+        "Buona continuazione amico mio.",
+        "Ciao e... duc in altum!",
+        "Grazie per aver giocato; alla prossima!",
+        "È stato un piacere giocare con te!",
+        "Spero di rivederti presto!",
+        "Spero di rivederti, anzi risentirti presto!"
+    ],
+    "enough": [
+        "basta"
+    ],
+    "equals": [
+        "è uguale a",
+        "fa"
+    ],
+    "failed": [
+        "No, mi dispiace"
+    ],
+    "goodbye": [
+        "A presto!",
+        "Alla prossima!",
+        "Arrivederci!",
+        "Ciao ciao!"
+    ],
+    "how_much": [
+        "Quanto fa "
+    ],
+    "levels": [
+        "base",
+        "elementare",
+        "medio",
+        "superiore"
+    ],
+    "misunderstand": [
+        "Cosa hai detto?",
+        "Non ho capito.",
+        "Non si sente bene: puoi ripetere?",
+        "Puoi ripetere?",
+        "Scusami, puoi ripetere?",
+        "Sono un po' sordo: puoi ripetere?"
+    ],
+    "right": [
+        "Bravissimo! Hai indovinato!",
+        "Bravo! Hai indovinato!",
+        "Eccellente! Hai indovinato!",
+        "Fantastico! Hai indovinato!",
+        "Hai indovinato!",
+        "Meraviglioso! Hai indovinato!",
+        "Molto bene! Hai indovinato!",
+        "Ottimo! Hai indovinato!",
+        "Perfetto! Hai indovinato!",
+        "Yes! Hai indovinato!"
+    ],
+    "subtraction": [
+        "%subtrahend% meno %minuend%"
+    ],
+    "summarize": [
+        "Hai risposto correttamente a %correctGuesses% %totalGuesses%."
+    ],
+    "totalGuesses": {
+        "one": "su una",
+        "other": "su %s"
+    },
+    "welcome": [
+        "Bentornato!",
+        "Benvenuto!",
+        "Ciao!",
+        "Ciao-ciao!",
+        "Eccoci qua!",
+        "Eccoci qui!",
+        "Eccoti qua!",
+        "Eccoti qui!",
+        "Hey!"
+    ],
+    "wrong": [
+        "Conta meglio, risposta sbagliata!",
+        "Eh no, risposta sbagliata: riprova!",
+        "No, risposta sbagliata: riprova!",
+        "Risposta sbagliata: riprova!",
+        "Peccato, risposta sbagliata: riprova!",
+        "Uffi, risposta errata: riprova!"
+    ]
 }

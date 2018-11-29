@@ -2,11 +2,11 @@
 
 const functions = require('firebase-functions');
 const {dialogflow, Suggestions} = require('actions-on-google');
-const {Utils, levels} = require('./utils');
+const {Utils} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '2.8.31';
+const version = '3.1.0';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -39,9 +39,9 @@ app.intent('Welcome and Level Choice', conv => {
         + ' '
         + strings.prompts('choose')
         + ': '
-        + levels.join();
+        + strings.allPrompts('levels').join(', ');
     conv.ask(welcomeText);
-    levels.forEach((level) => {
+    strings.allPrompts('levels').forEach((level) => {
         conv.ask(new Suggestions(level));
     });
     conv.ask(new Suggestions(strings.prompts('enough')));
@@ -62,6 +62,7 @@ app.intent('Difficulty Level', conv => {
     const response = "OK! "
         + strings
             .prompts('how_much')
+        + ' '
         + strings
             .prompts('subtraction')
             .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
@@ -96,6 +97,7 @@ app.intent('Response Answer', conv => {
                 + ' '
                 + strings
                     .prompts('how_much')
+                + ' '
                 + strings
                     .prompts('subtraction')
                     .replace('%subtrahend%', conv.utils.getCardinal(conv.data.subtrahend))
@@ -128,6 +130,7 @@ app.intent('Response Answer', conv => {
         conv.data.subtrahend = substraction.subtrahend;
         conv.data.minuend = substraction.minuend;
         agentResponse += strings.prompts('how_much')
+            + ' '
             + strings
                 .prompts('subtraction')
                 .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
