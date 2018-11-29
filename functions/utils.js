@@ -71,6 +71,8 @@ class Utils {
     endOfConversation(conv) {
         const strings = require('./strings');
 
+        strings.setLocale(conv.user.locale);
+
         let correctGuesses = strings.prompts('correctGuesses', conv.data.correctGuesses);
         let totalGuesses = strings.prompts('totalGuesses', conv.data.totalGuesses);
         let result = strings

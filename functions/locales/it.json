@@ -4,7 +4,7 @@
     ],
     "correctGuesses": {
         "one": "una domanda",
-        "other": "[0] zero domande|[2,] %s domande"
+        "other": "%s domande"
     },
     "credits": [
         "Buona continuazione amico mio.",

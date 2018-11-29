@@ -8,10 +8,11 @@ const assertArrays = require('chai-arrays');
 chai.use(assertArrays);
 const testCredentials = require("../test-credentials.json");
 const strings = require('../functions/strings');
-const { Utils, levels } = require('../functions/utils');
+const { Utils } = require('../functions/utils');
 
 const action = new ActionsOnGoogleAva(testCredentials);
 const utils = new Utils();
+const levels = strings.allPrompts('levels');
 
 action.startTest('sottrazioni - welcome', action => {
     action.locale = 'it-IT';

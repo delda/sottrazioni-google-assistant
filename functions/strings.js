@@ -41,6 +41,12 @@ const prompts = (key, quantity) => {
     return getValue(translated, index);
 };
 
+const allPrompts = (key) => {
+    log && console.log('[allPrompts]');
+
+    return i18n.__(key);
+};
+
 const getValue = (obj, idx) => {
     log && console.log('[getValue]');
 
@@ -79,6 +85,7 @@ const matchAll = (regexp, string) => {
 module.exports = {
     setLocale,
     prompts,
+    allPrompts,
     isPrompt,
     matchAll
 };

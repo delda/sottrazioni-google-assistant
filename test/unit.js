@@ -81,12 +81,15 @@ describe('string functions', () => {
 
 describe('utils functions', () => {
     describe('Utils.endOfConversation()', () => {
-        const utils = new Utils();
         it('single right response', () => {
+            let utils = new Utils();
             const conv = {
                 data: {
                     correctGuesses: 1,
                     totalGuesses: 1
+                },
+                user: {
+                    locale: 'it'
                 }
             };
             const result = utils.endOfConversation(conv);
@@ -95,10 +98,14 @@ describe('utils functions', () => {
             expect(result).to.have.string('su una');
         });
         it('multiple right responses', () => {
+            let utils = new Utils();
             const conv = {
                 data: {
                     correctGuesses: 5,
                     totalGuesses: 5
+                },
+                user: {
+                    locale: 'it'
                 }
             };
             const result = utils.endOfConversation(conv);
