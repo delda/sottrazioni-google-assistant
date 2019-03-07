@@ -1,4 +1,11 @@
 {
+    "again": [
+        "Do you wish to continue?",
+        "Let's go on with other questions?",
+        "Are you ready for a new round of questions?",
+        "Are you ready for other questions?",
+        "Do we continue with the questions?"
+    ],
     "choose": [
         "Select the desired level between "
     ],

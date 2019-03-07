@@ -1,4 +1,11 @@
 {
+    "again": [
+        "Vuoi continuare?",
+        "Andiamo avanti con altre domande?",
+        "Sei pronto per una nuova tornata di domande?",
+        "Sei pronto per altre domande?",
+        "Proseguiamo con le domande?"
+    ],
     "choose": [
         "Seleziona il livello desiderato tra"
     ],

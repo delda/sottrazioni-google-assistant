@@ -6,7 +6,7 @@ const {Utils} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '3.1.0';
+const version = '3.2.37';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -33,6 +33,7 @@ app.intent('Welcome and Level Choice', conv => {
         misundestand: false,
         initialized: false,
         suggestions: [],
+        questions: 5,
     };
 
     let welcomeText = strings.prompts('welcome')
@@ -126,22 +127,33 @@ app.intent('Response Answer', conv => {
     }
 
     if (conv.data.firstAttempt) {
-        const substraction = conv.utils.pickNumbers(conv.data.level);
-        conv.data.subtrahend = substraction.subtrahend;
-        conv.data.minuend = substraction.minuend;
-        agentResponse += strings.prompts('how_much')
-            + ' '
-            + strings
-                .prompts('subtraction')
-                .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
-                .replace('%minuend%', conv.utils.getCardinal(substraction.minuend))
-            + '?';
+        if (conv.data.totalGuesses % conv.data.questions === 0) {
+            agentResponse += strings
+                .prompts('summarize')
+                .replace('%correctGuesses%', strings.prompts('correctGuesses', conv.data.correctGuesses))
+                .replace('%totalGuesses%', strings.prompts('totalGuesses', conv.data.totalGuesses))
+                + ' '
+                + strings.prompts('again');
+            conv.ask(new Suggestions('Sì'));
+            conv.ask(new Suggestions('No'));
+        } else {
+            const substraction = conv.utils.pickNumbers(conv.data.level);
+            conv.data.subtrahend = substraction.subtrahend;
+            conv.data.minuend = substraction.minuend;
+            agentResponse += strings.prompts('how_much')
+                + ' '
+                + strings
+                    .prompts('subtraction')
+                    .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
+                    .replace('%minuend%', conv.utils.getCardinal(substraction.minuend))
+                + '?';
 
-        conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
-        conv.data.suggestions.forEach((suggestion) => {
-            conv.ask(new Suggestions(suggestion.toString()));
-        });
-        conv.ask(new Suggestions(strings.prompts('enough')));
+            conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
+            conv.data.suggestions.forEach((suggestion) => {
+                conv.ask(new Suggestions(suggestion.toString()));
+            });
+            conv.ask(new Suggestions(strings.prompts('enough')));
+        }
     }
 
     conv.ask(conv.utils.getSpeakMarkup(agentResponse));
@@ -157,6 +169,31 @@ app.intent('Misundestand', conv => {
     } else {
         conv.data.misunderstand = true;
         conv.ask(strings.prompts('misunderstand'));
+    }
+});
+
+app.intent('Quit question', conv => {
+    log && console.log('[quitQuestion]');
+
+    const confirmation = conv.parameters.confirmation;
+    switch (confirmation) {
+        case 'si': {
+            const substraction = conv.utils.pickNumbers(conv.data.level);
+            conv.data.subtrahend = substraction.subtrahend;
+            conv.data.minuend = substraction.minuend;
+            conv.ask(conv.utils.getSpeakMarkup(conv.utils.howMuch(conv)));
+            conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
+            conv.data.suggestions.forEach((suggestion) => {
+                conv.ask(new Suggestions(suggestion.toString()));
+            });
+            break;
+        }
+        case 'no':
+            conv.close(conv.utils.endOfConversation(conv));
+            break;
+        default:
+            conv.ask(strings.prompts('misunderstand'));
+            break;
     }
 });
 

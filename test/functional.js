@@ -1,7 +1,7 @@
 'use strict';
 
 const { ActionsOnGoogleAva } = require('actions-on-google-testing');
-const chai = require('chai')
+const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
 const assertArrays = require('chai-arrays');
@@ -140,7 +140,7 @@ action.startTest('sottrazioni - wrong answer', action => {
         });
 });
 
-action.startTest('sottrazioni - 5 right answers', action => {
+action.startTest('sottrazioni - 5 right answers and more', action => {
     action.locale = 'it-IT';
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
@@ -225,6 +225,48 @@ action.startTest('sottrazioni - 5 right answers', action => {
 
             return action.send(substractionResult.toString());
         })
+        .then(({ textToSpeech, suggestions }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            assert.equal(strings.isPrompt('right', rightResponse.replace(/(.*!).*/, '$1')), true);
+            assert.equal(strings.isPrompt('again', rightResponse.replace(/.*\. (.*)/, '$1')), true);
+
+            expect(suggestions).to.not.be.empty;
+            expect(suggestions).to.be.an('array');
+            expect(suggestions).to.have.lengthOf(2);
+            expect(suggestions).to.be.containing('Sì');
+            expect(suggestions).to.be.containing('No');
+
+            return action.send('Sì');
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/(.*?) <say-as.*/, '$1');
+            assert.equal(strings.isPrompt('how_much', rightResponse), true);
+        });
+});
+
+action.startTest('sottrazioni - 5 right answers and no more', action => {
+    action.locale = 'it-IT';
+    return action.startWith('il gioco delle sottrazioni')
+        .then(({ textToSpeech }) => {
+            const level = levels[utils.getRandomNumber(0, levels.length - 1)];
+            return action.send(level);
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
         .then(({ textToSpeech }) => {
             var rightResponse = textToSpeech[0]
                 .replace('<speak>', '')
@@ -232,5 +274,90 @@ action.startTest('sottrazioni - 5 right answers', action => {
                 .replace(/<audio.*?\/>/, '')
                 .replace(/(.*!).*/, '$1');
             assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '')
+                .replace(/(.*!).*/, '$1');
+            assert.equal(strings.isPrompt('right', rightResponse), true);
+
+            rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            const substraction = strings.matchAll(/\d+/, rightResponse);
+            const substractionResult = substraction[0] - substraction[1];
+
+            return action.send(substractionResult.toString());
+        })
+        .then(({ textToSpeech, suggestions }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/<audio.*?\/>/, '');
+            assert.equal(strings.isPrompt('right', rightResponse.replace(/(.*!).*/, '$1')), true);
+            assert.equal(strings.isPrompt('again', rightResponse.replace(/.*\. (.*)/, '$1')), true);
+
+            expect(suggestions).to.not.be.empty;
+            expect(suggestions).to.be.an('array');
+            expect(suggestions).to.have.lengthOf(2);
+            expect(suggestions).to.be.containing('Sì');
+            expect(suggestions).to.be.containing('No');
+
+            return action.send('No');
+        })
+        .then(({ textToSpeech }) => {
+            var rightResponse = textToSpeech[0]
+                .replace('<speak>', '')
+                .replace('</speak>', '')
+                .replace(/(.*) <audio.*/, '$1')
+                .replace(/.*?\. (.*)/, '$1');
+            assert.equal(strings.isPrompt('how_much', rightResponse), false);
+            assert.equal(strings.isPrompt('goodbye', rightResponse), true);
         });
 });

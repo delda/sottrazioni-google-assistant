@@ -53,6 +53,12 @@ describe('string functions', () => {
             const translations = i18n.__('spaghetti');
             should.equal(translations, 'spaghetti');
         });
+        it("plural translation of 'totalGuesses'", () => {
+            strings.setLocale('it');
+            const singular = strings.prompts('totalGuesses', 1);
+            const plural = strings.prompts('totalGuesses', 2);
+            should.not.equal(singular, plural);
+        });
     });
 
     describe('isPrompt()', () => {
