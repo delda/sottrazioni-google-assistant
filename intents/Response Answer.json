@@ -1,5 +1,5 @@
 {
-  "id": "f56b995c-5eaf-4e09-a038-a68e8f6df72f",
+  "id": "82d871d4-990b-4fd8-90f2-a599ec01a7ec",
   "name": "Response Answer",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "88724e24-3495-498c-a379-c3a585df1692",
+          "id": "35312ca8-a90e-485c-bc22-37473042add8",
           "required": false,
           "dataType": "@sys.number",
           "name": "guessedNumber",
@@ -21,7 +21,7 @@
         {
           "type": 0,
           "lang": "it",
-          "speech": "bene bene bene benussunissimo"
+          "speech": "bene bene bene benissimissimo"
         }
       ],
       "defaultResponsePlatforms": {},
@@ -31,7 +31,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1536521149,
+  "lastUpdate": 1543184425,
   "fallbackIntent": false,
   "events": []
 }

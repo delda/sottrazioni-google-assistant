@@ -1,0 +1,26 @@
+[
+  {
+    "value": "base",
+    "synonyms": [
+      "base"
+    ]
+  },
+  {
+    "value": "elementary",
+    "synonyms": [
+      "elementary"
+    ]
+  },
+  {
+    "value": "medium",
+    "synonyms": [
+      "medium"
+    ]
+  },
+  {
+    "value": "difficult",
+    "synonyms": [
+      "difficoult"
+    ]
+  }
+]

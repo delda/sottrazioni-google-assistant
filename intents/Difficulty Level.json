@@ -1,5 +1,5 @@
 {
-  "id": "4150ae45-5e18-43ae-9d9b-c5e5bc80fa13",
+  "id": "6f71bbb2-e3a2-44fe-98e3-ba4bb0f5b2fc",
   "name": "Difficulty Level",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "8d7242d2-6d61-4c62-b994-cc8900ac25ec",
+          "id": "d9b00212-f1a3-4545-9f4e-a4d9c461ab5c",
           "required": false,
           "dataType": "@difficultyLevel",
           "name": "difficultyLevel",
@@ -18,6 +18,11 @@
         }
       ],
       "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        },
         {
           "type": 0,
           "lang": "it",
@@ -36,7 +41,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1535843944,
+  "lastUpdate": 1543183986,
   "fallbackIntent": false,
   "events": []
 }

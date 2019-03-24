@@ -1,5 +1,5 @@
 {
-  "id": "6e5ec2e1-854b-45f0-8d37-cb240ad987ca",
+  "id": "938c3474-c1e6-401a-b6d9-646f95d83026",
   "name": "End of game",
   "auto": true,
   "contexts": [],
@@ -7,16 +7,7 @@
     {
       "resetContexts": false,
       "affectedContexts": [],
-      "parameters": [
-        {
-          "id": "3068c5f6-10a9-4393-bf68-251eb79ce1c9",
-          "required": false,
-          "dataType": "@sys.geo-city",
-          "name": "geo-city",
-          "value": "$geo-city",
-          "isList": false
-        }
-      ],
+      "parameters": [],
       "messages": [
         {
           "type": 0,
@@ -31,7 +22,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1537735430,
+  "lastUpdate": 1543184205,
   "fallbackIntent": false,
   "events": []
 }

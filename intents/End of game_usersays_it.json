@@ -1,71 +1,18 @@
 [
   {
-    "id": "21b9c48e-5307-4085-b039-df3e8c1369ae",
+    "id": "c34cea04-ccd3-41a9-bca7-d50a42d8d2c3",
     "data": [
       {
-        "text": "a presto",
+        "text": "basta",
         "userDefined": false
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1537735430
+    "updated": 1539635589
   },
   {
-    "id": "36eb0ac2-6725-49ff-b402-c132081fbfd8",
-    "data": [
-      {
-        "text": "fine",
-        "meta": "@sys.ignore",
-        "userDefined": false
-      },
-      {
-        "text": " app",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
-  },
-  {
-    "id": "2ea163f3-b974-49ea-a381-08ead1b2ae5d",
-    "data": [
-      {
-        "text": "esci dall\u0027app",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
-  },
-  {
-    "id": "7703d887-d52d-4c08-8012-b2af6caa6744",
-    "data": [
-      {
-        "text": "stop app",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
-  },
-  {
-    "id": "76c7af26-1eda-42c1-89ef-7edf7939d8f2",
-    "data": [
-      {
-        "text": "esci dal gioco",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
-  },
-  {
-    "id": "acc2e42c-1e68-44b9-834f-9e5c485e7a92",
+    "id": "327b48d0-11ee-45a7-8678-2f23496ec192",
     "data": [
       {
         "text": "stop gioco",
@@ -73,11 +20,11 @@
       }
     ],
     "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
+    "count": 1,
+    "updated": 1539635589
   },
   {
-    "id": "20db916a-5160-4d7b-a7b8-e0b04a0fbe03",
+    "id": "01c46186-397f-4423-b80f-9366bb534f66",
     "data": [
       {
         "text": "fine",
@@ -90,11 +37,47 @@
       }
     ],
     "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
+    "count": 1,
+    "updated": 1539635589
   },
   {
-    "id": "5a18408d-9fc8-45df-8445-ee54b5a09d16",
+    "id": "52eb33b1-1038-44bb-ad4e-277749556606",
+    "data": [
+      {
+        "text": "esci dall\u0027app",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635589
+  },
+  {
+    "id": "a6b0dfe4-0293-43f5-9359-e670b013ddbb",
+    "data": [
+      {
+        "text": "esci",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635589
+  },
+  {
+    "id": "4e8aa351-1763-4407-9c57-c34cebeef4fe",
+    "data": [
+      {
+        "text": "fine app",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635589
+  },
+  {
+    "id": "4c7473d7-4721-489e-affd-2ce4790e5e2e",
     "data": [
       {
         "text": "fine",
@@ -104,22 +87,34 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1536532935
+    "updated": 1539635589
   },
   {
-    "id": "dadb82f1-b930-48de-ad07-be972c0b2b2d",
+    "id": "888521d5-be21-4600-a43e-d9a55951c57b",
     "data": [
       {
-        "text": "esci",
+        "text": "a presto",
         "userDefined": false
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1536532935
+    "updated": 1539635589
   },
   {
-    "id": "6bce43c6-4e94-4c9e-ba69-69686d53a0c9",
+    "id": "1e792510-66bb-4576-a1ee-66dc1bc79f43",
+    "data": [
+      {
+        "text": "esci dal gioco",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635589
+  },
+  {
+    "id": "cbe9ff3f-aeba-4b56-aad7-a7c6b89bef17",
     "data": [
       {
         "text": "stop",
@@ -128,18 +123,6 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1536532935
-  },
-  {
-    "id": "15eddaf6-bbad-4ed3-ac18-db2fed480e24",
-    "data": [
-      {
-        "text": " basta",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1536532935
+    "updated": 1539635589
   }
 ]

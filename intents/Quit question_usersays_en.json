@@ -1,0 +1,30 @@
+[
+  {
+    "id": "e101d369-07ab-428a-ac7f-bbe28da1a1bd",
+    "data": [
+      {
+        "text": "yes",
+        "alias": "confirmation",
+        "meta": "@confirmation",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551220126
+  },
+  {
+    "id": "3d8b4d2c-e3ac-425e-9d55-6eed85053ce6",
+    "data": [
+      {
+        "text": "no",
+        "alias": "confirmation",
+        "meta": "@confirmation",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551220126
+  }
+]

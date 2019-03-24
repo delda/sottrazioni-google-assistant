@@ -1,42 +1,6 @@
 [
   {
-    "id": "4f0b5849-28ce-4479-b270-1b2a17d12fe7",
-    "data": [
-      {
-        "text": "quello ",
-        "userDefined": false
-      },
-      {
-        "text": "elementare",
-        "alias": "difficultyLevel",
-        "meta": "@difficultyLevel",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1534976928
-  },
-  {
-    "id": "333d2cd5-03da-4777-852d-99c830a2e660",
-    "data": [
-      {
-        "text": "scelgo quello ",
-        "userDefined": false
-      },
-      {
-        "text": "elementare",
-        "alias": "difficultyLevel",
-        "meta": "@difficultyLevel",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1534976928
-  },
-  {
-    "id": "4a3e3e93-a3af-4197-822c-f19abda09d17",
+    "id": "36b6f495-4035-4dde-9927-d8b2d1ea326c",
     "data": [
       {
         "text": "scelgo il livello ",
@@ -51,24 +15,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1534976928
+    "updated": 1539635440
   },
   {
-    "id": "ba87a69e-96cb-4c45-a3df-1fd174986d4e",
-    "data": [
-      {
-        "text": "elementare",
-        "alias": "difficultyLevel",
-        "meta": "@difficultyLevel",
-        "userDefined": true
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1534976846
-  },
-  {
-    "id": "ce5929eb-d725-4833-81ba-5d2fb8e8a237",
+    "id": "de8d824f-a4ec-4456-9f41-6994e766712f",
     "data": [
       {
         "text": "livello ",
@@ -83,6 +33,56 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1534976846
+    "updated": 1539635440
+  },
+  {
+    "id": "b18106b2-5eb5-4325-9ed1-453216a15ec9",
+    "data": [
+      {
+        "text": "scelgo quello ",
+        "userDefined": false
+      },
+      {
+        "text": "elementare",
+        "alias": "difficultyLevel",
+        "meta": "@difficultyLevel",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1,
+    "updated": 1539635440
+  },
+  {
+    "id": "8a537404-48ae-47cf-a4b0-5a42a5b5a602",
+    "data": [
+      {
+        "text": "quello ",
+        "userDefined": false
+      },
+      {
+        "text": "elementare",
+        "alias": "difficultyLevel",
+        "meta": "@difficultyLevel",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635440
+  },
+  {
+    "id": "d3313153-bf75-40d6-988b-4a7f084ce912",
+    "data": [
+      {
+        "text": "elementare",
+        "alias": "difficultyLevel",
+        "meta": "@difficultyLevel",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1539635440
   }
 ]

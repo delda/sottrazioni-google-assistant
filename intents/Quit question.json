@@ -1,0 +1,31 @@
+{
+  "id": "f62ae4e2-1352-4324-8452-c5c8998cf86f",
+  "name": "Quit question",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "0ef273a7-0664-4288-a739-e3dea050b013",
+          "dataType": "@confirmation",
+          "name": "confirmation",
+          "value": "$confirmation",
+          "isList": false
+        }
+      ],
+      "messages": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1551738252,
+  "fallbackIntent": false,
+  "events": []
+}

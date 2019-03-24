@@ -1,0 +1,134 @@
+[
+  {
+    "id": "04f42ca3-df3f-4fcc-94e2-49c516607e7f",
+    "data": [
+      {
+        "text": "quit",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "1737cdbd-0eb7-45f5-b8e6-a846248c8db4",
+    "data": [
+      {
+        "text": "see you soon",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "c9bacc85-dce4-427d-bf0f-3de946e3abd1",
+    "data": [
+      {
+        "text": "stop",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "e394a4bf-7f2c-44fc-becb-69fe478f5ce9",
+    "data": [
+      {
+        "text": "end",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "4fcd9776-0076-4e12-9a39-1e7c2250f0f0",
+    "data": [
+      {
+        "text": "exit",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "62cef54f-ce79-465f-8a8c-7be25485ef38",
+    "data": [
+      {
+        "text": "exit the game",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "ecd86d60-c276-4967-8cd9-6ba37730587a",
+    "data": [
+      {
+        "text": "end game",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "565a69b8-0b0e-4e87-aa6c-48d9a9d2f6eb",
+    "data": [
+      {
+        "text": "stop game",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "8922c5ff-2e72-48a4-9d69-064b181f9d79",
+    "data": [
+      {
+        "text": "that will do",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "f2969e46-392d-4e02-b114-1ba6992000ef",
+    "data": [
+      {
+        "text": "that\u0027s enough",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  },
+  {
+    "id": "a8830f8b-7e88-4004-8188-9fbee2a57707",
+    "data": [
+      {
+        "text": "enough",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1543184205
+  }
+]
