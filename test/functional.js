@@ -16,6 +16,7 @@ const levels = strings.allPrompts('levels');
 
 action.startTest('sottrazioni - welcome', action => {
     action.locale = 'it-IT';
+    const levels = strings.allPrompts('levels');
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech, suggestions }) => {
             expect(textToSpeech).to.be.an('array');
@@ -47,6 +48,7 @@ action.startTest('sottrazioni - welcome', action => {
 
 action.startTest('sottrazioni - right answer + end of game', action => {
     action.locale = 'it-IT';
+    const levels = strings.allPrompts('levels');
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
             const level = levels[utils.getRandomNumber(0, levels.length - 1)];
@@ -91,6 +93,7 @@ action.startTest('sottrazioni - right answer + end of game', action => {
 
 action.startTest('sottrazioni - wrong answer', action => {
     action.locale = 'it-IT';
+    const levels = strings.allPrompts('levels');
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
             const level = levels[utils.getRandomNumber(0, levels.length - 1)];
@@ -141,7 +144,8 @@ action.startTest('sottrazioni - wrong answer', action => {
 });
 
 action.startTest('sottrazioni - 5 right answers and more', action => {
-    action.locale = 'it-IT';
+    action.locale = 'en-US';
+    const levels = strings.allPrompts('levels');
     return action.startWith('il gioco delle sottrazioni')
         .then(({ textToSpeech }) => {
             const level = levels[utils.getRandomNumber(0, levels.length - 1)];
@@ -252,7 +256,8 @@ action.startTest('sottrazioni - 5 right answers and more', action => {
 
 action.startTest('sottrazioni - 5 right answers and no more', action => {
     action.locale = 'it-IT';
-    return action.startWith('il gioco delle sottrazioni')
+    const levels = strings.allPrompts('levels');
+    return action.startWith('learn subtrations')
         .then(({ textToSpeech }) => {
             const level = levels[utils.getRandomNumber(0, levels.length - 1)];
             return action.send(level);
