@@ -61,14 +61,7 @@ app.intent('Difficulty Level', conv => {
     conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
 
     const response = "OK! "
-        + strings
-            .prompts('how_much')
-        + ' '
-        + strings
-            .prompts('subtraction')
-            .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
-            .replace('%minuend%', conv.utils.getCardinal(substraction.minuend))
-        + "?";
+        + strings.howMuch(substraction.subtrahend, substraction.minuend);
 
     conv.ask(conv.utils.getSpeakMarkup(response));
     conv.data.suggestions.forEach((suggestion) => {
@@ -96,14 +89,7 @@ app.intent('Response Answer', conv => {
             agentResponse += conv.utils.getSound('retry.mp3')
                 + strings.prompts('wrong')
                 + ' '
-                + strings
-                    .prompts('how_much')
-                + ' '
-                + strings
-                    .prompts('subtraction')
-                    .replace('%subtrahend%', conv.utils.getCardinal(conv.data.subtrahend))
-                    .replace('%minuend%', conv.utils.getCardinal(conv.data.minuend))
-                + '?';
+                + strings.howMuch(conv.data.subtrahend, conv.data.minuend);
 
             conv.data.firstAttempt = false;
             conv.data.suggestions.forEach((suggestion) => {
@@ -140,13 +126,7 @@ app.intent('Response Answer', conv => {
             const substraction = conv.utils.pickNumbers(conv.data.level);
             conv.data.subtrahend = substraction.subtrahend;
             conv.data.minuend = substraction.minuend;
-            agentResponse += strings.prompts('how_much')
-                + ' '
-                + strings
-                    .prompts('subtraction')
-                    .replace('%subtrahend%', conv.utils.getCardinal(substraction.subtrahend))
-                    .replace('%minuend%', conv.utils.getCardinal(substraction.minuend))
-                + '?';
+            agentResponse += strings.howMuch(substraction.subtrahend, substraction.minuend);
 
             conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
             conv.data.suggestions.forEach((suggestion) => {
@@ -181,7 +161,7 @@ app.intent('Quit question', conv => {
             const substraction = conv.utils.pickNumbers(conv.data.level);
             conv.data.subtrahend = substraction.subtrahend;
             conv.data.minuend = substraction.minuend;
-            conv.ask(conv.utils.getSpeakMarkup(conv.utils.howMuch(conv)));
+            conv.ask(conv.utils.getSpeakMarkup(strings.howMuch(substraction.subtrahend, substraction.minuend)));
             conv.data.suggestions = conv.utils.getRandomSuggestions(substraction);
             conv.data.suggestions.forEach((suggestion) => {
                 conv.ask(new Suggestions(suggestion.toString()));

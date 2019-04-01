@@ -104,7 +104,7 @@ class Utils {
         return '<break time="' + time + '"/>';
     }
 
-    howMuch(conv) {
+    howMuch(subtrahend, minuend) {
         const strings = require('./strings');
         strings.setLocale(conv.user.locale);
 
@@ -113,12 +113,10 @@ class Utils {
             + ' '
             + strings
                 .prompts('subtraction')
-                .replace('%subtrahend%', this.getCardinal(conv.data.subtrahend))
-                .replace('%minuend%', this.getCardinal(conv.data.minuend))
+                .replace('%subtrahend%', this.getCardinal(subtrahend))
+                .replace('%minuend%', this.getCardinal(minuend))
             + '?';
     }
-
-
 }
 
 const Substraction = {

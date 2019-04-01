@@ -82,10 +82,24 @@ const matchAll = (regexp, string) => {
     return results;
 };
 
+const howMuch = (subtrahend, minuend) => {
+    log && console.log('[howMuch]');
+
+    let utils = new Utils();
+
+    return prompts('how_much')
+        + ' '
+        + prompts('subtraction')
+        .replace('%subtrahend%', utils.getCardinal(subtrahend))
+        .replace('%minuend%', utils.getCardinal(minuend))
+        + '?';
+};
+
 module.exports = {
     setLocale,
     prompts,
     allPrompts,
     isPrompt,
-    matchAll
+    matchAll,
+    howMuch
 };
