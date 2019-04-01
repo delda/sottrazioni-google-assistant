@@ -6,7 +6,7 @@ const {Utils} = require('./utils');
 const strings = require('./strings');
 
 const log = false;
-const version = '3.2.37';
+const version = '3.3.13';
 
 process.env.DEBUG = 'dialogflow:debug';
 
@@ -175,6 +175,15 @@ app.intent('Quit question', conv => {
             conv.ask(strings.prompts('misunderstand'));
             break;
     }
+});
+
+app.intent('Repeat', conv => {
+    log && console.log('[repeat]');
+
+    var agentResponse = strings.prompts('repeat')
+        + ' '
+        + strings.howMuch(conv.data.subtrahend, conv.data.minuend);
+    conv.ask(conv.utils.getSpeakMarkup(agentResponse));
 });
 
 app.intent('End of game', conv => {

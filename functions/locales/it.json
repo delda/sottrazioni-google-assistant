@@ -54,6 +54,10 @@
 		"Scusami, puoi ripetere?",
 		"Sono un po' sordo: puoi ripetere?"
 	],
+	"repeat": [
+		"Mi ripeto:",
+		"OK, te lo ripeto:"
+	],
 	"right": [
 		"Bravissimo! Hai indovinato!",
 		"Bravo! Hai indovinato!",

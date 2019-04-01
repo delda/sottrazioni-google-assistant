@@ -59,6 +59,12 @@
 		"I didn't understand",
 		"Sorry, can you repeat, please?"
 	],
+	"repeat": [
+		"OK:",
+		"I repeat:",
+		"I'm telling you:",
+		"I keep telling you:"
+	],
 	"right": [
 		"Excellent, well done!",
 		"Excellent, you guessed it!",

@@ -83,6 +83,16 @@ describe('string functions', () => {
             should.equal(strings.matchAll(/\d+/, question).length, 0);
         });
     });
+
+    describe('howMuch()', () => {
+        it('find subtrahend and minuend', () => {
+            const subtrahend = 5;
+            const minuend = 2;
+            const howMuch = strings.howMuch(subtrahend, minuend);
+            expect(howMuch).to.include(subtrahend);
+            expect(howMuch).to.include(minuend);
+        });
+    });
 });
 
 describe('utils functions', () => {
