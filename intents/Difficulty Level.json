@@ -22,16 +22,6 @@
           "type": 0,
           "lang": "en",
           "speech": []
-        },
-        {
-          "type": 0,
-          "lang": "it",
-          "speech": [
-            "Ok, vada per il livello $difficultyLevel da te scelto",
-            "Va bene: livello $difficultyLevel selezionato",
-            "Hai scelto il livello $difficultyLevel",
-            "Inizio a farti delle domande di livello $difficultyLevel"
-          ]
         }
       ],
       "defaultResponsePlatforms": {},

@@ -1,22 +1,14 @@
 {
-  "id": "82d871d4-990b-4fd8-90f2-a599ec01a7ec",
-  "name": "Response Answer",
+  "id": "69327c01-a2b9-446d-9c58-8b5cd0c1b4d6",
+  "name": "Repeat",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
+      "action": "",
       "affectedContexts": [],
-      "parameters": [
-        {
-          "id": "35312ca8-a90e-485c-bc22-37473042add8",
-          "required": false,
-          "dataType": "@sys.number",
-          "name": "guessedNumber",
-          "value": "$guessedNumber",
-          "isList": false
-        }
-      ],
+      "parameters": [],
       "messages": [
         {
           "type": 0,
@@ -31,7 +23,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1543184425,
   "fallbackIntent": false,
   "events": []
 }
